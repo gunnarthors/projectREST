@@ -16,7 +16,7 @@ angular.module('projectRestApp', [
             })
             .when('/student', {
                 templateUrl: 'views/student.html',
-                controller: 'AdminCtrl'
+                controller: 'StudentCtrl'
             })
             .otherwise({
                 redirectTo: '/'
