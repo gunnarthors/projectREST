@@ -18,6 +18,10 @@ angular.module('projectRestApp', [
                 templateUrl: 'views/student.html',
                 controller: 'StudentCtrl'
             })
+            .when('/createTemplate', {
+                templateUrl: 'views/create.html',
+                controller: 'CreateCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
