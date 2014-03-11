@@ -3,7 +3,10 @@
 angular.module('projectRestApp', [
     'ngResource',
     'ngRoute',
-    'restangular'
+    'restangular',
+    'projectRestApp.MainCtrl',
+    'projectRestApp.StudentCtrl',
+    'projectRestApp.service'
  ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
@@ -15,7 +18,7 @@ angular.module('projectRestApp', [
                 templateUrl: 'views/admin.html',
                 controller: 'AdminCtrl'
             })
-            .when('/student', {
+            .when('/:name/:token', {
                 templateUrl: 'views/student.html',
                 controller: 'StudentCtrl'
             })
@@ -27,3 +30,4 @@ angular.module('projectRestApp', [
                 redirectTo: '/'
             });
     }]);
+
