@@ -24,10 +24,9 @@
 
 <div class="row">
     <div class="col-xs-4">
+        <h4>{{error.Message}}</h4>
         <ul>
-            <li>Hello Student</li>
-            <li class="active"><a ng-href="#/admin">Admin</a></li>
-            <li class="active"><a ng-href="#/student">Student</a></li>
+            <li ng-repeat="course in courses">{{course.CourseID}} {{course.NameIS}} ({{course.NameEN}})</li>
         </ul>
     </div>
     <div class="col-xs-8">

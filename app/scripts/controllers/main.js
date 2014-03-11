@@ -1,16 +1,19 @@
 'use strict';
 
 angular.module('projectRestApp.MainCtrl', [])
-    .controller('MainCtrl',['$scope', '$location', '$resource', 'BackEnd', 'Restangular', function ($scope, $location, $resource, BackEnd, Restangular) {
+    .controller('MainCtrl',['$scope', '$location', 'BackEnd', function ($scope, $location, BackEnd) {
 
-        var base = BackEnd.all('login');
         $scope.loginUsr = function() {
-            console.log($scope.usr);
-            base.post($scope.usr).then(function(data){
-                $scope.name = data.User.Username;
-                $scope.token = data.Token;
-                $location.path('/' + $scope.name + '/' + $scope.token);
-            });
+            BackEnd.login($scope.usr)
+                .success(function(data) {
+                    $scope.name = data.User.Username;
+                    $scope.token = data.Token;
+                    $location.path('/' + $scope.name + '/' + $scope.token);
+                })
+                .error(function(data, status, headers) {
+                    $scope.error.status = status;
+                    $scope.error.header = headers;
+                });
         };
 
         $scope.awesomeThings = [

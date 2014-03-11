@@ -3,7 +3,6 @@
 angular.module('projectRestApp', [
     'ngResource',
     'ngRoute',
-    'restangular',
     'projectRestApp.MainCtrl',
     'projectRestApp.StudentCtrl',
     'projectRestApp.service'
@@ -30,4 +29,5 @@ angular.module('projectRestApp', [
                 redirectTo: '/'
             });
     }]);
+
 
