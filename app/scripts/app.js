@@ -2,7 +2,8 @@
 
 angular.module('projectRestApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'restangular'
  ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
