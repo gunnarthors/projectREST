@@ -13,7 +13,7 @@ angular.module('projectRestApp', [
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/admin', {
+            .when('/admin/:token', {
                 templateUrl: 'views/admin.html',
                 controller: 'AdminCtrl'
             })

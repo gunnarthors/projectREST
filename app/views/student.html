@@ -24,19 +24,18 @@
 
 <div class="row">
     <div class="col-xs-4">
-        <h4>{{error.Message}}</h4>
+        <h5>Your Courses:</h5>
         <ul>
             <li ng-repeat="course in courses">{{course.CourseID}} {{course.NameIS}} ({{course.NameEN}})</li>
         </ul>
     </div>
     <div class="col-xs-8">
+        <h5>Your Evaluations:</h5>
         <ul>
-            <li>Hello Student</li>
+            <!--<li ng-repeat="eval in evaluations">{{eval.CourseID}} {{eval.NameIS}}</li>-->
             <li class="active"><a ng-href="#/admin">Admin</a></li>
             <li class="active"><a ng-href="#/student">Student</a></li>
         </ul>
-        fjaslkfja vakdjf asdijf akfj a´sdfja´dkfja´sldfkjas casjdckalæfjkalf aksdfja´jfkaldfjádkjf afkja´s fkja dsfkasdfásdjf a´sdf
-        asdfjælkasdjflakæsdjfla æsdflk
     </div>
 </div>
 
@@ -45,10 +44,4 @@
 <div class="footer">
     <div class="col-md-4">WEPO Project 3</div>
     <div class="col-md-8">Bjarni, Gunnar og Hildur </div>
-</div>
-<div class="navbar-fixed-bottom">
-    <ul>
-        <li class="active"><a ng-href="#/admin">Admin</a></li>
-        <li class="active"><a ng-href="#/student">Student</a></li>
-    </ul>
 </div>
