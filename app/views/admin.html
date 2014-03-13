@@ -16,7 +16,13 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="#">Courses</a></li>
                     <li><a href="#">Teachers</a></li>
-                    <li><a href="#">Templates</a></li>
+                    <li class="dropdown"><a data-toggle="dropdown">Templates</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="template in templates">
+                                <a ng-click="openTemp(template.ID)">
+                                    <span style="cursor:pointer">{{template.TitleIS}} {{template.TitleEN}}</span></a></li>
+                        </ul>
+                    </li>
                     <li><a class="btn btn-primary btn-xs"  ng-click="createTemplate()">Create Template</a></li>
                 </ul>
             </div>
@@ -27,14 +33,21 @@
     <div class="col-xs-6">
         <h5>All evaluations:</h5>
         <ul>
-            <li ng-repeat="eval in evaluations">{{eval.TemplateTitleIS}}</li>
+            <li ng-repeat="eval in evaluations">{{eval.TemplateTitleEN}}</li>
         </ul>
     </div>
     <div class="col-xs-6">
-        <h5>All Templates:</h5>
+        <h3>{{evalTemp.TitleEN}}</h3>
+        <h4>{{evalTemp.IntroTextEN}}</h4>
         <ul>
-            <li ng-repeat="template in templates">{{template.TitleIS}}</li>
+            <li ng-repeat="quest in evalTemp.CourseQuestions">{{quest.TextEN}}
+                <ul>
+                    <li ng-repeat="ans in quest.Answers">{{ans.TextEN}}</li>
+                </ul>
+            </li>
         </ul>
+
+
     </div>
 </div>
 

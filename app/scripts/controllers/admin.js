@@ -28,4 +28,17 @@ angular.module('projectRestApp')
             .error(function(status){
                 $scope.Eerror = status;
             });
+
+        $scope.openTemp = function(tempid){
+            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/evaluationtemplates/'+ tempid, $scope.token)
+            .success(function(data){
+                console.log(data);
+                $scope.evalTemp = data;
+            })
+            .error(function(status){
+                $scope.Terror = status;
+            });
+        };
+
+
 }]);
