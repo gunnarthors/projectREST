@@ -6,7 +6,7 @@ angular.module('projectRestApp.service', [])
             login: function(usr){
                 return $http({
                     method: 'POST',
-                    url: 'http://project3api.haukurhaf.net/api/v1/login',
+                    url: 'http://dispatch.ru.is/h14/api/v1/login',
                     data: usr
                 });
             },
