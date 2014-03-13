@@ -16,6 +16,14 @@ angular.module('projectRestApp.service', [])
                     url: url,
                     headers: {'Authorization': 'Basic ' + token}
                 });
+            },
+            authPOST: function(method, url, token, data){
+                return $http({
+                    method: method,
+                    url: url,
+                    headers: {'Authorization': 'Basic ' + token},
+                    data: data
+                });
             }
         };
     }]);
