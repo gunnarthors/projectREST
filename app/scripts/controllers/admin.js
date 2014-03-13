@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('projectRestApp')
-    .controller('AdminCtrl',['$scope', '$route', 'BackEnd', function ($scope, $route, BackEnd) {
+    .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', function ($scope, $route, BackEnd, $location) {
         $scope.param = $route.current.params;
         $scope.token = $scope.param.token;
+
+        $scope.createTemplate = function(){
+            $location.path('/admin/createTemplate/' + $scope.token);
+        };
 
         // Get all evaluations
         BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/evaluations', $scope.token)

@@ -17,13 +17,13 @@ angular.module('projectRestApp', [
                 templateUrl: 'views/admin.html',
                 controller: 'AdminCtrl'
             })
+            .when('/admin/createTemplate/:token', {
+                templateUrl: 'views/create.html',
+                controller: 'CreateCtrl'
+            })
             .when('/:name/:token', {
                 templateUrl: 'views/student.html',
                 controller: 'StudentCtrl'
-            })
-            .when('/:token/createTemplate', {
-                templateUrl: 'views/create.html',
-                controller: 'CreateCtrl'
             })
             .otherwise({
                 redirectTo: '/'
