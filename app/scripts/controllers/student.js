@@ -5,7 +5,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.param = $route.current.params;
 
           // Get student courses
-        BackEnd.authRequest('GET', 'http://dispatch.hir.is/h14/api/v1/my/courses', $scope.param.token)
+        BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/my/courses', $scope.param.token)
             .success(function(data){
                 $scope.courses = data;
                 console.log(data);
@@ -18,7 +18,7 @@ angular.module('projectRestApp.StudentCtrl', [])
 
         $scope.courseStuff = function(ID, time){
             $scope.year = time.substr(0,4);
-            BackEnd.authRequest('GET', 'http://dispatch.hir.is/h14/api/v1/courses/' + ID + '/' + $scope.year + '/teachers', $scope.param.token)
+            BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/courses/' + ID + '/' + $scope.year + '/teachers', $scope.param.token)
                 .success(function(data){
                     $scope.courseTeachers = data;
                     $scope.specialCourse = true;
@@ -35,7 +35,7 @@ angular.module('projectRestApp.StudentCtrl', [])
 //                    $scope.EError = status;
 //                });
         };
-        BackEnd.authRequest('GET', 'http://dispatch.hir.is/h14/api/v1/my/evaluations', $scope.param.token)
+        BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/my/evaluations', $scope.param.token)
             .success(function(data){
                 $scope.evaluations = data;
             })
