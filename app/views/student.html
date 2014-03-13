@@ -1,41 +1,61 @@
 <div  class="header">
-    <div >
-        <!--**************************ath laga id upp a css ****************************-->
-        <nav id="head" class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h3 class="text-muted"><a ng-href="#/index">projectREST</a></h3>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav nav-pills pull-right">
-                    <li><a href="#">Veff</a></li>
-                    <li><a href="#">FML</a></li>
-                    <li><a href="#">Styrikerfi</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <!--**************************ath laga id upp a css ****************************-->
+    <nav id="head" class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3 class="text-muted"><a ng-href="#/index">projectREST</a></h3>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav nav-pills pull-right">
+                <li class="dropdown" ng-repeat="course in courses"  ng-click="courseStuff(course.CourseID, course.DateBegin)">
+                    <a class="btn btn-primary btn-xs" class="dropdown-toggle" data-toggle="dropdown">
+                        {{course.NameIS}}
+                    </a>
+                    <!--<ul class="dropdown-menu" ng-repeat="teacher in courseTeachers">-->
+                        <!--<li ng-repeat="teacher in courseTeachers">{{teacher.FullName}}</li>-->
+                    <!--</ul>-->
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 
 <div class="row">
-    <div class="col-xs-4">
-        <h5>Your Courses:</h5>
-        <ul>
-            <li ng-repeat="course in courses">{{course.CourseID}} {{course.NameIS}} ({{course.NameEN}})</li>
+    <div class="col-md-4">
+        <h5>My Evaluations:</h5>
+        <ul class="list-unstyled">
+            <li ng-repeat="eval in evaluations">{{eval}}</li>
+            <li>midterm eval</li>
+            <li>lateterm eval</li>
+            <li>Endalaus möt</li>
         </ul>
     </div>
-    <div class="col-xs-8">
-        <h5>Your Evaluations:</h5>
-        <ul>
-            <!--<li ng-repeat="eval in evaluations">{{eval.CourseID}} {{eval.NameIS}}</li>-->
-            <li class="active"><a ng-href="#/admin">Admin</a></li>
-            <li class="active"><a ng-href="#/student">Student</a></li>
-        </ul>
+
+    <div class="col-md-5">
+    </div>
+
+    <div class="col-md-3">
+        <div ng-hide="specialCourse" id="image"><img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"  heigth="150" width="100" alt="student"></div>
+        <!--<div class="col-md-4">-->
+            <!--<a href="#" class="thumbnail">-->
+                <!--<img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png/100%x180%" alt="student">-->
+            <!--</a>-->
+        <!--</div>-->
+
+
+        <div ng-show="specialCourse">
+            Student Name
+            <button ng-click="teacherList = !teacherList" type="button" class="btn btn-primary">Teachers</button>
+            <ul ng-show="teacherList" class="list-unstyled">
+                <li ng-repeat="teacher in courseTeachers">{{teacher.FullName}}</li>
+            </ul>
+        </div>
+        </br>
     </div>
 </div>
 
