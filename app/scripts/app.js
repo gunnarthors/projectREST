@@ -21,7 +21,7 @@ angular.module('projectRestApp', [
                 templateUrl: 'views/student.html',
                 controller: 'StudentCtrl'
             })
-            .when('/createTemplate', {
+            .when('/:token/createTemplate', {
                 templateUrl: 'views/create.html',
                 controller: 'CreateCtrl'
             })
