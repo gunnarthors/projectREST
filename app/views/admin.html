@@ -30,25 +30,84 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-6">
-        <h5>All evaluations:</h5>
-        <ul>
-            <li ng-repeat="eval in evaluations">{{eval.TemplateTitleEN}}</li>
-        </ul>
+    <div>
+        <h4>Set Date</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
+                           min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled()"
+                           ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event, true)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button class="btn btn-default" ng-click="open($event, false)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-6">
-        <h3>{{evalTemp.TitleEN}}</h3>
-        <h4>{{evalTemp.IntroTextEN}}</h4>
-        <ul>
-            <li ng-repeat="quest in evalTemp.CourseQuestions">{{quest.TextEN}}
-                <ul>
-                    <li ng-repeat="ans in quest.Answers">{{ans.TextEN}}</li>
-                </ul>
-            </li>
-        </ul>
+    <div>
+        <h5>StartDate: {{startDate}}</h5>
+        <h5>EndDate: {{endDate}}</h5>
+    </div>
+    <!--<div>-->
+        <!--<h4>End Date</h4>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<p class="input-group">-->
+                    <!--<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"-->
+                           <!--min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"-->
+                           <!--ng-required="true" close-text="Close" ng-model="endDate" />-->
+                    <!--<span class="input-group-btn">-->
+                        <!--<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+                    <!--</span> {{endDate}}-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
 
-    </div>
+
+
+    <!--<div class="col-xs-6">-->
+        <!--<h5>All evaluations:</h5>-->
+        <!--<ul>-->
+            <!--<li ng-repeat="eval in evaluations">{{eval.TemplateTitleEN}}</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="col-xs-6">-->
+        <div class="well well-lg">
+        <h4>{{evalTemp.TitleEN}}</h4>
+        <h5>{{evalTemp.IntroTextEN}}</h5>
+
+        <h5>Course Questions:</h5>
+        <form class="form-horizontal" ng-repeat="quest in evalTemp.CourseQuestions">
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>{{$index + 1}}. &nbsp;{{quest.TextEN}}</legend>
+                    <div class="radio" ng-repeat="ans in quest.Answers">
+                        <input type="radio" name="radios" value="ans.TextEN"/><span>&nbsp;{{ans.TextEN}}</span>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+
+        <h5>Teachers Questions:</h5>
+        <form class="form-horizontal" ng-repeat="Tquest in evalTemp.TeacherQuestions">
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>{{$index + 1}}. &nbsp;{{Tquest.TextEN}}</legend>
+                    <div class="radio" ng-repeat="wer in Tquest.Answers">
+                        <input type="radio" name="radios" value="wer.TextEN"/><span>&nbsp;{{wer.TextEN}}</span>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+        </div>
+
+
+
+    <!--</div>-->
 </div>
 
 <div class="footer">
