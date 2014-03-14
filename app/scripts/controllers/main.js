@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('projectRestApp.MainCtrl', [])
@@ -21,7 +22,8 @@ angular.module('projectRestApp.MainCtrl', [])
                     }
                 })
                 .error(function(data, status, headers) {
-                    $scope.error.status = status;
+                    $scope.errorMessage = 'Ooops! you entered wrong username or password, pleace try again!!!';
+                    $scope.error = true;
                     $scope.error.header = headers;
                 });
         };
@@ -31,4 +33,4 @@ angular.module('projectRestApp.MainCtrl', [])
             'AngularJS',
             'Karma'
         ];
-   }]);
+    }]);

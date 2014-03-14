@@ -28,17 +28,28 @@
     <!--<li class="active">Create Template</li>-->
 <!--</ol>-->
 <div>
-    <form ng-show="head" role="form">
-        <label> Template name:</label>
-        <input type="text" ng-model="title" placeholder="Template name" class="form-control">
-        <input type="text" ng-model="description"
-            placeholder="Evaluation description" class="form-control"></br>
-    <!--<input type="text" ng-model="titleIS"-->
-           <!--placeholder="Nafn sniðmát" class="form-control">-->
-    <!--<input type="text" ng-model="descriptionIS"-->
-           <!--placeholder="Sniðmáts lýsing" class="form-control">-->
-        <button class="btn btn-success btn-xs" ng-click="evalDescript(); isCollapsed = true; isColl = true; head = false; quest = true"
-            class="form-control">Submit</button>
+    <form ng-show="head" role="form" name="templateForm" ng-submit="submitForm(templateForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : templateForm.title.$invalid && !templateForm.title.$pristine }">
+            <label> Template name:</label>
+            <input type="text" name="title" ng-model="title" class="form-control"  required>
+            <p ng-show="templateForm.title.$invalid && !templateForm.title.$pristine" class="help-block">Template title is required!</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : templateForm.description.$invalid && !templateForm.description.$pristine }">
+            <label> Evaluation description:</label>
+            <input type="text" name="description" ng-model="description" class="form-control" required>
+            <p ng-show="templateForm.description.$invalid && !templateForm.description.$pristine"
+               class="help-block">Template description is required!</p>
+                <!--<input type="text" ng-model="titleIS"-->
+                <!--placeholder="Nafn sniðmát" class="form-control">-->
+                <!--<input type="text" ng-model="descriptionIS"-->
+                <!--placeholder="Sniðmáts lýsing" class="form-control">-->
+        </div>
+        <div class="form-group">
+
+                <button class="btn btn-success btn-s" ng-click="evalDescript(); isCollapsed = true; isColl = true; head = false; quest = true"
+                    class="form-control">Submit</button>
+
+        </div>
     </form>
 
     <div class="well well-lg"  ng-show="quest">
@@ -65,26 +76,31 @@
         <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed; isColl = true; multi()">Multi choice question</button>
         <div ng-hide="isCollapsed">
             <div class="well well-lg">
-                <div class="form-group">
-                    <label for="pollQuestion">Question</label>
-                    <input type="text" ng-model="question.TextEN" class="form-control"
-                        id="pollQuestion" placeholder="Enter poll question">
-                </div>
+                <form name="mPollForm" ng-submit="submitForm(mPollForm.$valid)" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : mPollForm.question.$invalid && !mPollForm.question.$pristine }">
+                        <label for="pollQuestion">Question:</label>
+                        <input type="text" ng-model="question.TextEN" name="question" class="form-control"
+                            id="pollQuestion" required>
+                        <p ng-show="mPollForm.question.$invalid && !mPollForm.question.$pristine" class="help-block">Question is required!</p>
+                    </div>
             <!--<div class="form-group">-->
             <!--<label for="konnun">Spurning</label>-->
             <!--<input type="text" ng-model="spurning" class="form-control"-->
             <!--id="konnun" placeholder="Skráðu spurningu">-->
             <!--</div>-->
                 <div class="form-group">
-                    <label>Choices</label>
+                    <label>Choices:</label>
                     <div ng-repeat="choice in question.Answers">
-                        <input type="text" ng-model="choice.TextEN" class="form-control" placeholder="Enter answer {{$index +1}}"></br>
+                        <div class="form-group">
+                            <input type="text" ng-model="choice.TextEN" class="form-control"
+                                   placeholder="Enter answer {{$index +1}}"/>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="button" class="btn btn-default" ng-click="addChoice()">
-                            <span class="glyphicon glyphicon-plus"></span>Add another choice</button>
+                        <button type="button" class="btn btn-primary btn-s" ng-click="addChoice()">
+                            <span class="glyphicon glyphicon-plus"></span>Add choice</button>
                     </div>
                 </div>
                 <div class="row">
@@ -96,6 +112,7 @@
                     </span>Save as teacher question</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -103,11 +120,13 @@
         <button class="btn btn-default" ng-click="isColl = !isColl; isCollapsed = true; text()">Text question</button>
         <div ng-hide="isColl">
             <div class="well well-lg">
-                <div class="form-group">
-                    <label for="pollQuestion">Question</label>
-                    <input type="text" ng-model="question.TextEN" class="form-control"
-                        placeholder="Enter poll question">
-                </div>
+                <form name="pollForm" ng-submit="submitForm(pollForm.$valid)" novalidate>
+                    <div class="form-group"  ng-class="{ 'has-error' : pollForm.question.$invalid && !pollForm.question.$pristine }">
+                        <label for="pollQuestion">Question</label>
+                        <input type="text" ng-model="question.TextEN" class="form-control" name="question"
+                            placeholder="Enter poll question" required>
+                        <p ng-show="pollForm.question.$invalid && !pollForm.question.$pristine" class="help-block">Question is required!</p>
+                    </div>
             <!--<div class="form-group">-->
                 <!--<label for="konnun">Spurning</label>-->
                 <!--<input type="text" ng-model="spurning" class="form-control"-->
@@ -122,6 +141,7 @@
                         <span class="glyphicon glyphicon-plus"></span>Save as teacher question</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
