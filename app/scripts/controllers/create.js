@@ -2,6 +2,7 @@
 
 angular.module('projectRestApp')
     .controller('CreateCtrl',['$scope', 'BackEnd', '$route', '$location', function ($scope, BackEnd, $route, $location) {
+        $scope.isCollapsed = false;
         $scope.param = $route.current.params;
         $scope.token = $scope.param.token;
         $scope.head = true;
@@ -23,23 +24,58 @@ angular.module('projectRestApp')
         $scope.question = {};
         $scope.question.Answers = [{TextIS: '', TextEN:'', ImageURL: '', Weight: ''},
             {TextIS: '', TextEN:'', ImageURL: '', Weight: ''}];
+
+        $scope.reset = function() {
+            $scope.question = {};
+            $scope.question.Answers = [{TextIS: '', TextEN:'', ImageURL: '', Weight: ''},
+                {TextIS: '', TextEN:'', ImageURL: '', Weight: ''}];
+        };
         $scope.addChoice = function() {
             $scope.question.Answers.push({TextIS: '', TextEN:'', ImageURL: '', Weight: ''});
-            console.log($scope.question);
         };
+
+        $scope.multi = function() {
+            $scope.question.Type = 'multi';
+        };
+
+        $scope.text = function() {
+            $scope.question.Type = 'text';
+        };
+
+//        $scope.show = function() {
+//            if($scope.evalObject.CourseQuestions.Type === 'text') {
+//                console.log();
+//                $scope.multi = false;
+//                $scope.text = true;
+//            }
+//            if($scope.evalObject.CourseQuestions.Type === 'multi') {
+//                $scope.multi = true;
+//                $scope.text = false;
+//            }
+//        };
 
         $scope.addCourseQuestion = function() {
             $scope.evalObject.CourseQuestions.push($scope.question);
+<<<<<<< HEAD
             $scope.question = {};
             $scope.question.Answers = [{TextIS: '', TextEN:'', ImageURL: '', Weight: ''},
                 {TextIS: '', TextEN:'', ImageURL: '', Weight: ''}];
+=======
+            $scope.reset();
+>>>>>>> 598a0ef508affebd1fca76ab22eecfd4bb99a35d
             console.log($scope.evalObject);
         };
         $scope.addTeacherQuestion = function() {
+            $scope.output = $scope.question;
             $scope.evalObject.TeacherQuestions.push($scope.question);
+<<<<<<< HEAD
             $scope.question = {};
             $scope.question.Answers = [{TextIS: '', TextEN:'', ImageURL: '', Weight: ''},
                 {TextIS: '', TextEN:'', ImageURL: '', Weight: ''}];
+=======
+            $scope.reset();
+            console.log($scope.evalObject);
+>>>>>>> 598a0ef508affebd1fca76ab22eecfd4bb99a35d
         };
         $scope.saveTemplate = function() {
             BackEnd.authPOST('POST', 'http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $scope.token, $scope.evalObject)
