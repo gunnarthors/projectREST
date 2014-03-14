@@ -64,7 +64,6 @@ angular.module('projectRestApp')
             else if($scope.check === false){
                 $scope.endDate = $scope.formatDate($scope.dt);
             }
-
         };
 
         $scope.toggleMin = function() {
