@@ -30,10 +30,16 @@ angular.module('projectRestApp')
 
         $scope.addCourseQuestion = function() {
             $scope.evalObject.CourseQuestions.push($scope.question);
+            $scope.question = {};
+            $scope.question.Answers = [{TextIS: '', TextEN:'', ImageURL: '', Weight: ''},
+                {TextIS: '', TextEN:'', ImageURL: '', Weight: ''}];
             console.log($scope.evalObject);
         };
         $scope.addTeacherQuestion = function() {
             $scope.evalObject.TeacherQuestions.push($scope.question);
+            $scope.question = {};
+            $scope.question.Answers = [{TextIS: '', TextEN:'', ImageURL: '', Weight: ''},
+                {TextIS: '', TextEN:'', ImageURL: '', Weight: ''}];
         };
         $scope.saveTemplate = function() {
             BackEnd.authPOST('POST', 'http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $scope.token, $scope.evalObject)
