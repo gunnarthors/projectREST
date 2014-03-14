@@ -41,7 +41,6 @@ angular.module('projectRestApp')
         $scope.text = function() {
             $scope.question.Type = 'text';
         };
-
 //        $scope.show = function() {
 //            if($scope.evalObject.CourseQuestions.Type === 'text') {
 //                console.log();
@@ -53,7 +52,6 @@ angular.module('projectRestApp')
 //                $scope.text = false;
 //            }
 //        };
-
         $scope.addCourseQuestion = function() {
             $scope.evalObject.CourseQuestions.push($scope.question);
             $scope.reset();
