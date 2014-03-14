@@ -14,19 +14,19 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav nav-pills pull-right">
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Teachers</a></li>
-                    <li><a href="#">Templates</a></li>
+                    <li><a href="#/admin/{{token}}">Home</a></li>
+                    <!--<li><a href="#">Teachers</a></li>-->
+                    <!--<li><a href="#">Templates</a></li>-->
                 </ul>
             </div>
         </nav>
     </div>
 </div>
-<ol class="breadcrumb">
-    <li><a href="#">Login</a></li>
-    <li><a href="#/admin/{{token}}">Home</a></li>
-    <li class="active">Create Template</li>
-</ol>
+<!--<ol class="breadcrumb">-->
+    <!--<li><a href="#">Login</a></li>-->
+    <!--<li><a href="#/admin/{{token}}">Home</a></li>-->
+    <!--<li class="active">Create Template</li>-->
+<!--</ol>-->
 <div>
     <form ng-show="head" role="form">
         <label> Template name:</label>
@@ -41,7 +41,7 @@
             class="form-control">Submit</button>
     </form>
 
-    <div class="well well-lg">
+    <div class="well well-lg"  ng-show="quest">
         <h4>{{evalObject.TitleEN}}</h4>
         <h5>{{evalObject.IntroTextEN}}</h5>
 
@@ -127,18 +127,36 @@
     </div>
 </div>
     <p><hr></p>
-    <div class="row">
+    <div class="row" ng-show="quest">
         <div class="col-xs-12">
-            <button class="btn btn-primary pull-right" type="submit" ng-click="saveTemplate()">Save template &raquo;</button>
+            <button class="btn btn-primary pull-right" type="submit" ng-click="saveTemplate();">Save template &raquo;</button>
         </div>
     </div>
     <p>&nbsp;</p>
 </form>
 
+<div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" id="create.html">
+        <div class="modal-header">
+            <h3>I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 
-
-
-
+    <button class="btn btn-default" ng-click="open()">Open me!</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
 
 <div class="footer">
     <div class="col-md-4">WEPO Project 3</div>
