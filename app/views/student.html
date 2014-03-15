@@ -16,7 +16,7 @@
                 <li class="dropdown" ng-repeat="course in courses"  ng-click="courseStuff(course.CourseID, course.DateBegin)">
                     <a class="btn btn-primary btn-xs">{{course.NameIS}}</a>
                 </li>
-                <li><a class="btn btn-success btn-xs">Home</a></li>
+                <li><a class="btn btn-success btn-xs" ng-click="home()">Home</a></li>
             </ul>
         </div>
     </nav>
@@ -27,19 +27,20 @@
         <!--{{courseID}}-->
         <div class="row">
 
-            <div class="col-md-4" ng-repeat="teacher in courseTeachers">{{teacher.FullName}}<img src="{{teacher.ImageURL}}"></div>
-            <div class="col-md-2"> <div ng-hide="specialCourse" id="image"><img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"
-                                                                                heigth="120" width="50" alt="student"></div></div>
+            <div class="col-xs-3 col-md-1" ng-repeat="teacher in courseTeachers">{{teacher.FullName}}<a class="thumbnail">
+                <img src="{{teacher.ImageURL}}"></a></div>
+            <div class="col-xs-6 col-md-3"> <div ng-hide="specialCourse" id="image">
+                <img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"
+                     heigth="120" width="50" alt="student"></div></div>
         </div>
     </div>
 </div>
 
-
-<div class="row">
+<div class="row" ng-show="!open">
     <div class="col-md-4">
         <h5>My Evaluations:</h5>
         <ul class="list-unstyled">
-            <li ng-repeat="eval in evaluations">{{eval.CourseNameEN}}</li>
+            <li ng-repeat="a in arr"><a ng-click="openEval(a.ID, a.CourseID)" >{{a.CourseID}}</br>{{a.TitleEN}} </a></li>
         </ul>
     </div>
 
@@ -47,24 +48,42 @@
     </div>
 
     <div class="col-md-3">
-        <!--<div ng-hide="specialCourse" id="image"><img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"  heigth="150" width="100" alt="student"></div>-->
-        <!--<div class="col-md-4">-->
-            <!--<a href="#" class="thumbnail">-->
-                <!--<img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png/100%x180%" alt="student">-->
-            <!--</a>-->
-        <!--</div>-->
 
 
-        <!--<div ng-show="specialCourse">-->
-            <!--Student Name-->
-            <!--<button ng-click="teacherList = !teacherList" type="button" class="btn btn-primary">Teachers</button>-->
-            <!--<ul ng-show="teacherList" class="list-unstyled">-->
-                <!--<li ng-repeat="teacher in courseTeachers">{{teacher.FullName}}</li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <!--</br>-->
     </div>
 </div>
+
+<div class="well well-lg" ng-show="open">
+    <h4>{{openedEvaluation.TitleEN}}</h4>
+    <h5>{{openedEvaluation.IntroTextEN}}</h5>
+
+    <h5>Course Questions:</h5>
+    <form class="form-horizontal" ng-repeat="quest in openedEvaluation.CourseQuestions">
+        <div class="well well-lg">
+            <fieldset>
+                <legend>{{$index + 1}}. &nbsp;{{quest.TextEN}}{{quest.ID}}</legend>
+                <div class="radio" ng-repeat="ans in quest.Answers">
+                    <input type="radio" ng-click="chosen(ans.TextEN, quest.ID)" name="radios"/><span>&nbsp;{{ans.TextEN}}</span>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+
+    <h5>Teachers Questions:</h5>
+    <form class="form-horizontal" ng-repeat="Tquest in openedEvaluation.TeacherQuestions">
+        <div class="well well-lg">
+            <fieldset>
+                <legend>{{$index + 1}}. &nbsp;{{Tquest.TextEN}}</legend>
+                <div class="radio" ng-repeat="wer in Tquest.Answers">
+                    <input type="radio" name="radios" ng-click="chosen(wer.TextEN, Tquest.ID)"/><span>&nbsp;{{wer.TextEN}}</span>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    <a class="btn btn-success btn-xs" ng-click="sendAns()">Send</a>
+</div>
+
+
 
 
 
