@@ -1,5 +1,5 @@
 
-<div  id="head" class="header">
+<div id="heads" class="header">
     <!--**************************ath laga id upp a css ****************************-->
     <nav id="head" class="navbar navbar-default">
         <div class="navbar-header">
@@ -23,21 +23,32 @@
 </div>
 <div class="panel panel-info">
     <div class="panel-heading">{{ fullName }} &nbsp;&nbsp; {{courseID}}</div>
-    <div class="panel-body">
-        <!--{{courseID}}-->
+    <div class="panel-body" ng-hide="teacherInf">
         <div class="row">
-
-            <div class="col-xs-3 col-md-1" ng-repeat="teacher in courseTeachers">{{teacher.FullName}}<a class="thumbnail">
-                <img src="{{teacher.ImageURL}}"></a></div>
-            <div class="col-xs-6 col-md-3"> <div ng-hide="specialCourse" id="image">
-                <img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"
-                     heigth="120" width="50" alt="student"></div></div>
+            <div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers">
+                <div class="thumbnail"  id="teacherInfo">
+                    <img id="img" height="42" width="42" src="{{teacher.ImageURL}}" >
+                    <div class="caption">
+                        <p>&nbsp;{{teacher.FullName}}<p>
+                        <p>&nbsp;Email: &nbsp;{{teacher.Email}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="row" ng-show="!open">
     <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-6 col-md-2">
+                <div class="thumbnail">
+                    <img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"
+                         heigth="45" width="40" alt="student"></div>
+            </div>
+        </div>
+
+
         <h5>My Evaluations:</h5>
         <ul class="list-unstyled">
             <li ng-repeat="a in arr"><a ng-click="openEval(a.ID, a.CourseID)" >{{a.CourseID}}</br>{{a.TitleEN}} </a></li>

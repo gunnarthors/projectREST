@@ -5,6 +5,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.param = $route.current.params;
         $scope.open = false;
         $scope.fullName = UserFactory.getUserFullName();
+        $scope.teacherInf = true;
 
           // Get student courses
         BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/my/courses', $scope.param.token)
@@ -19,6 +20,7 @@ angular.module('projectRestApp.StudentCtrl', [])
             });
 
         $scope.courseStuff = function(ID, time){
+            $scope.teacherInf = false;
             $scope.courseID = ID;
             $scope.year = time.substr(0,4);
             BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + ID + '/' + $scope.year + '/teachers', $scope.param.token)
