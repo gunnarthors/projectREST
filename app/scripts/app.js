@@ -6,6 +6,7 @@ angular.module('projectRestApp', [
     'projectRestApp.MainCtrl',
     'projectRestApp.StudentCtrl',
     'projectRestApp.service',
+    'projectRestApp.factory',
     'ui.bootstrap'
  ])
     .config(['$routeProvider', function ($routeProvider) {

@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('projectRestApp.StudentCtrl', [])
-    .controller('StudentCtrl',['$scope', 'BackEnd', '$route', function ($scope, BackEnd, $route) {
+    .controller('StudentCtrl',['$scope', 'BackEnd', 'UserFactory', '$route', function ($scope, BackEnd, UserFactory, $route) {
         $scope.param = $route.current.params;
         $scope.open = false;
+        $scope.fullName = UserFactory.getUserFullName();
 
           // Get student courses
         BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/my/courses', $scope.param.token)

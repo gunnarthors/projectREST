@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('projectRestApp.MainCtrl', [])
-    .controller('MainCtrl',['$scope', '$location', 'BackEnd', function ($scope, $location, BackEnd) {
+    .controller('MainCtrl',['$scope', '$location', 'BackEnd', 'UserFactory', function ($scope, $location, BackEnd, UserFactory) {
 
         // log in function
         $scope.loginUsr = function() {
@@ -12,6 +12,12 @@ angular.module('projectRestApp.MainCtrl', [])
                     $scope.token = data.Token;
                     console.log(data.User.Role);
                     if(data.User.Role === 'student'){
+                        UserFactory.setUserFullName(data.User.FullName);
+                        UserFactory.setUsername(data.User.Username);
+                        UserFactory.setUserSSN(data.User.SSN);
+                        console.log(UserFactory.getUserFullName());
+                        console.log(UserFactory.getUsername());
+                        console.log(UserFactory.getUserSSN());
                         $location.path('/' + $scope.name + '/' + $scope.token);
                     }
                     else if(data.User.Role === 'admin'){
