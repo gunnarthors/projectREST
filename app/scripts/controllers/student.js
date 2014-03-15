@@ -8,7 +8,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.teacherInf = true;
 
           // Get student courses
-        BackEnd.authRequest('GET', 'http://project3api.haukurhaf.net/api/v1/my/courses', $scope.param.token)
+        BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/courses', $scope.param.token)
             .success(function(data){
                 $scope.courses = data;
                 $scope.semester = data.DateBegin;
@@ -39,21 +39,17 @@ angular.module('projectRestApp.StudentCtrl', [])
 
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.param.token)
             .success(function(data){
-                console.log(data);
                 $scope.evaluations = data;
                 $scope.arr = [];
                 data.forEach(function(entry){
-                    console.log(entry);
                     BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.param.token)
                         .success(function(info){
-                            console.log('hello er i backend 222');
                             var obj = entry;
                             obj.TitleEN = info.TitleEN;
-                            console.log(obj);
                             $scope.arr.push(obj);
                         })
                         .error(function(){
-                            console.log('ERRROROROROR');
+                            console.log('ERROR');
                         });
                 });
             })

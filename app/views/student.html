@@ -46,23 +46,18 @@
             <div class="col-md-6 col-md-4">
                 <div class="thumbnail">
                     <img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"
-                         heigth="45" width="40" alt="student"></div>
+                         heigth="45" width="40" alt="student">
+                </div>
             </div>
         </div>
-
-
         <h5>My Evaluations:</h5>
         <ul class="list-unstyled">
             <li ng-repeat="a in arr"><a ng-click="openEval(a.ID, a.CourseID)" >{{a.CourseID}}</br>{{a.TitleEN}} </a></li>
         </ul>
     </div>
-
-    <div class="col-md-6">
-
-    </div>
-
-    </div>
+    <div class="col-md-6"></div>
 </div>
+<!--</div>-->
 
 <div class="well well-lg" ng-show="open">
     <h4>{{openedEvaluation.TitleEN}}</h4>
@@ -72,7 +67,7 @@
     <form class="form-horizontal" ng-repeat="quest in openedEvaluation.CourseQuestions">
         <div class="well well-lg">
             <fieldset>
-                <legend>{{$index + 1}}. &nbsp;{{quest.TextEN}}{{quest.ID}}</legend>
+                <legend>{{$index + 1}}. &nbsp;{{quest.TextEN}}</legend>
                 <div class="radio" ng-repeat="ans in quest.Answers">
                     <input type="radio" ng-click="chosen(ans.TextEN, quest.ID)" name="radios"/><span>&nbsp;{{ans.TextEN}}</span>
                 </div>
@@ -93,10 +88,6 @@
     </form>
     <a class="btn btn-success btn-xs" ng-click="sendAns()">Send</a>
 </div>
-
-
-
-
 
 <div class="footer">
     <div class="col-md-4">WEPO Project 3</div>
