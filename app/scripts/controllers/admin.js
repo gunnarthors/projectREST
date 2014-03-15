@@ -189,10 +189,7 @@ angular.module('projectRestApp')
                     .success(function(){
                         console.log('Successfully deployed evaluation ID: ' + $scope.currID + ' Start datetime: ' + $scope.startDate +
                             ' End datetime: ' + $scope.endDate);
-//                        $location.path('/admin/' + $scope.token);
-                        $scope.publicSuccess = true;
                         $route.reload();
-                        $scope.publicSuccess = true;
                     })
                     .error(function(){
                         $scope.publicErr = true;
@@ -200,5 +197,4 @@ angular.module('projectRestApp')
                     });
             }
         };
-
 }]);
