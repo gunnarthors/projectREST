@@ -1,3 +1,8 @@
+/* Pointer cursor on links in nav and list of evaluations */
+.dropdown-menu li:hover, .dropdown-toggle:hover, .evals {
+    cursor: pointer;
+}
+
 /* Space out content a bit */
 body {
     padding-top: 20px;
