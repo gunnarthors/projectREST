@@ -1,7 +1,6 @@
 
 <div  class="header">
-    <div >
-        <!--**************************ath laga id upp a css ****************************-->
+    <div>
         <nav id="head" class="navbar navbar-default">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -29,18 +28,53 @@
         </nav>
     </div>
 </div>
-<div class="row">
+<div>
+    <div class="alert alert-success alert-dismissable" ng-show="publicSuccess">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Success!</strong> Successfully deployed evaluation ID: {{currID}}
+    </div>
+    <div class="alert alert-success alert-dismissable" ng-show="publicErr">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Error!</strong> Something went wrong. Evaluation ID: {{currID}} was not made public.
+</div>
+</div>
+<div class="col-md-2"></div>
+
+<div class="col-md-8">
+    <div class="well well-lg" ng-show="!showTemp">
+        <legend>All evaluations:</legend>
+        <form class="form-horizontal" ng-repeat="eval in evaluations">
+            <div class="well well-lg">
+                <fieldset>
+                    <h4>{{eval.TemplateTitleEN}}</h4>
+                    <dl>
+                        <dt>ID:</dt>
+                            <dd>{{eval.ID}}</dd>
+                        <dt>StartDate:</dt>
+                            <dd>{{eval.StartDate}}</dd>
+                        <dt>EndDate:</dt>
+                            <dd>{{eval.EndDate}}</dd>
+                        <dt>Status:</dt>
+                            <dd>{{eval.Status}}</dd>
+                    </dl>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" ng-show="showTemp" >
     <div>
         <h4>Set Date</h4>
         <div class="row">
             <div class="col-md-6">
                 <p class="input-group">
-                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
+                    <input type="text" ng-change="openTime()" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
                            min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled()"
                            ng-required="true" close-text="Close" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open($event, true)"><i class="glyphicon glyphicon-calendar"></i></button>
-                        <button class="btn btn-default" ng-click="open($event, false)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <button class="btn btn-default" ng-click="open($event, true)">Start</button>
+                        <button class="btn btn-default" ng-click="open($event, false)">End</button>
                     </span>
                 </p>
             </div>
@@ -50,33 +84,31 @@
         <h5>StartDate: {{startDate}}</h5>
         <h5>EndDate: {{endDate}}</h5>
     </div>
-    <!--<div>-->
-        <!--<h4>End Date</h4>-->
-        <!--<div class="row">-->
-            <!--<div class="col-md-6">-->
-                <!--<p class="input-group">-->
-                    <!--<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"-->
-                           <!--min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"-->
-                           <!--ng-required="true" close-text="Close" ng-model="endDate" />-->
-                    <!--<span class="input-group-btn">-->
-                        <!--<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
-                    <!--</span> {{endDate}}-->
-                <!--</p>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div>
+        <script type="text/ng-template" id="modalTime.html">
+            <div class="modal-header">
+                <h3>Select time!</h3>
+            </div>
+            <div class="modal-body">
+                <div ng-model="mytime" style="display:inline-block;">
+                        <timepicker hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
 
-
-
-
-    <!--<div class="col-xs-6">-->
-        <!--<h5>All evaluations:</h5>-->
-        <!--<ul>-->
-            <!--<li ng-repeat="eval in evaluations">{{eval.TemplateTitleEN}}</li>-->
-        <!--</ul>-->
-    <!--</div>-->
-    <!--<div class="col-xs-6">-->
-        <div class="well well-lg">
+                    <button class="btn btn-default" ng-click="update(23, 59)">Set to 23:59</button>
+                    <button class="btn btn-default" ng-click="update(12, 00)">Set to 12:00</button>
+                    <pre class="alert alert-info">Time set is: {{mytime | date:'shortTime' }}</pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok(mytime)">OK</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </script>
+        <!--<button class="btn btn-default" ng-click="openTime()">Open me!</button>-->
+        <div>
+            <button class="btn btn-default" ng-click="makePublic()">Make public!</button>
+        </div>
+    </div>
+    <div class="well well-lg">
         <h4>{{evalTemp.TitleEN}}</h4>
         <h5>{{evalTemp.IntroTextEN}}</h5>
 
@@ -103,11 +135,7 @@
                 </fieldset>
             </div>
         </form>
-        </div>
-
-
-
-    <!--</div>-->
+    </div>
 </div>
 
 <div class="footer">
