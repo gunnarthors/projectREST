@@ -17,9 +17,11 @@ angular.module('projectRestApp.StudentCtrl', [])
             });
 
         $scope.courseStuff = function(ID, time){
+            $scope.courseID = ID;
             $scope.year = time.substr(0,4);
             BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + ID + '/' + $scope.year + '/teachers', $scope.param.token)
                 .success(function(data){
+                    console.log(data);
                     $scope.courseTeachers = data;
                     $scope.specialCourse = true;
                 })
@@ -37,6 +39,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         };
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.param.token)
             .success(function(data){
+                console.log(data);
                 $scope.evaluations = data;
             })
             .error(function(status){
