@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('projectRestApp')
-    .controller('CreateCtrl',['$scope', 'BackEnd', '$route', '$location', '$log', '$modal',
-        function ($scope, BackEnd, $route, $location, $log, $modal) {
+    .controller('CreateCtrl',['$scope', 'BackEnd', '$route', '$location',
+        function ($scope, BackEnd, $route, $location) {
         $scope.isCollapsed = false;
         $scope.param = $route.current.params;
         $scope.token = $scope.param.token;
@@ -74,54 +74,4 @@ angular.module('projectRestApp')
 //                    $scope.error.status = status;
 //                });
         };
-
-
-         $scope.ModalDemoCtrl = function ($scope, $modal, $log) {
-
-            $scope.items = ['item1', 'item2', 'item3'];
-
-            $scope.open = function () {
-
-                $scope.modalInstance = $modal.open({
-                    templateUrl: 'views/create.html',
-                    controller: $scope.ModalInstanceCtrl,
-                    resolve: {
-                        items: function () {
-                            return $scope.items;
-                        }
-                    }
-                });
-
-                $scope.modalInstance.result.then(function (selectedItem) {
-                    $scope.selected = selectedItem;
-                }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
-                });
-            };
-        };
-
-
-
-
-        $scope.ModalInstanceCtrl = function ($scope, $modalInstance) {
-
-            $scope.items = 'blessaður';
-            $scope.selected = {
-                item: $scope.items
-            };
-
-            $scope.ok = function () {
-                $modalInstance.close($scope.selected.item);
-            };
-
-            $scope.cancel = function () {
-                $modalInstance.dismiss('cancel');
-            };
-        };
-
-
-
-
-
-
     }]);
