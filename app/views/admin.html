@@ -86,28 +86,6 @@
         <h5>StartDate: {{startDate.substr(0, 10) || 'Not Set!'}} &nbsp; {{startDate.substr(11)}}</h5>
         <h5>EndDate: {{endDate.substr(0, 10) || 'Not Set!'}} &nbsp; {{endDate.substr(11)}}</h5>
     </div>
-
-    <div class="row" ng-show="showTemp" >
-        <div>
-            <h4>Set Date</h4>
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="input-group">
-                        <input type="text" ng-change="openTime()" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
-                               min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled()"
-                               ng-required="true" close-text="Close" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" ng-click="open($event, true)">Start</button>
-                            <button class="btn btn-default" ng-click="open($event, false)">End</button>
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h5>StartDate: {{startDate}}</h5>
-            <h5>EndDate: {{endDate}}</h5>
-        </div>
         <div>
             <script type="text/ng-template" id="modalTime.html">
                 <div class="modal-header">
