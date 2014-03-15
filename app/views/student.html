@@ -23,7 +23,9 @@
 </div>
 <div class="panel panel-info">
     <div class="panel-heading">{{ fullName }} &nbsp;&nbsp; {{courseID}}</div>
+
     <div class="panel-body" ng-hide="teacherInf">
+
         <div class="row">
             <div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers">
                 <div class="thumbnail"  id="teacherInfo">
@@ -39,9 +41,9 @@
 </div>
 
 <div class="row" ng-show="!open">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="row">
-            <div class="col-md-6 col-md-2">
+            <div class="col-md-6 col-md-4">
                 <div class="thumbnail">
                     <img src="http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png"
                          heigth="45" width="40" alt="student"></div>
@@ -55,11 +57,9 @@
         </ul>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-6">
+
     </div>
-
-    <div class="col-md-3">
-
 
     </div>
 </div>
