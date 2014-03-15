@@ -9,6 +9,12 @@
     background-color: pink;
 
 }
-#head {
+#teacherInfo {
+    font-size: 10px;
+ }
+#heads {
     margin-bottom: 0px;
+}
+#img {
+    float: left;
 }
