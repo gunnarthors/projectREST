@@ -92,7 +92,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.sendAns = function() {
             BackEnd.authPOST('POST', 'http://dispatch.ru.is/h14/api/v1/courses/' + $scope.currentCourse + '/20141/evaluations/' + $scope.currentID,
                     $scope.param.token, $scope.ansArray)
-                .success(function(data){
+                .success(function(){
                     $route.reload();
                 });
 
