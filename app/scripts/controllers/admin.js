@@ -4,8 +4,6 @@ angular.module('projectRestApp')
     .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', '$modal', '$log', function ($scope, $route, BackEnd, $location, $modal, $log) {
         $scope.param = $route.current.params;
         $scope.token = $scope.param.token;
-//        $scope.publicSuccess = false;
-//        $scope.publicErr = false;
 
         $scope.createTemplate = function(){
             $location.path('/admin/createTemplate/' + $scope.token);
@@ -14,7 +12,6 @@ angular.module('projectRestApp')
         // Get all evaluations
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/evaluations', $scope.token)
             .success(function(data){
-                console.log(data);
                 $scope.evaluations = data;
             })
             .error(function(status){
@@ -196,5 +193,18 @@ angular.module('projectRestApp')
                         console.log('Evaluation was not deployed... Something went wrong!');
                     });
             }
+        };
+
+        $scope.reload = function(){
+            $route.reload();
+        };
+
+        $scope.showResult = function(id){
+            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/evaluations/' + id, $scope.token)
+                .success(function(results){
+                    $scope.Results = results;
+                    console.log(results);
+                });
+
         };
 }]);
