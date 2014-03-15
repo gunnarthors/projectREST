@@ -41,25 +41,19 @@
     <div class="col-md-2"></div>
 
     <div class="col-md-8">
-        <div class="well well-lg" ng-show="!showTemp">
-            <legend>All evaluations:</legend>
-            <form class="form-horizontal" ng-repeat="eval in evaluations">
-                <div class="well well-lg" ng-click="showResult(eval.ID)" style="cursor:pointer">
-                    <fieldset>
-                        <h4>{{eval.TemplateTitleEN}}</h4>
-                        <dl>
-                            <dt>ID:</dt>
-                                <dd>{{eval.ID}}</dd>
-                            <dt>StartDate:</dt>
-                                <dd>{{eval.StartDate}}</dd>
-                            <dt>EndDate:</dt>
-                                <dd>{{eval.EndDate}}</dd>
-                            <dt>Status:</dt>
-                                <dd>{{eval.Status}}</dd>
-                        </dl>
-                    </fieldset>
+        <legend ng-show="!showTemp">All evaluations:</legend>
+        <div class="form-horizontal" ng-repeat="eval in evaluations"  ng-show="!showTemp">
+            <div class="panel-info">
+                <div class="panel-heading" ng-click="showResult(eval.ID)" style="cursor:pointer">
+                    {{eval.TemplateTitleEN}}
+                    <p id="status">Status:&nbsp;{{eval.Status}}</p>
                 </div>
-            </form>
+                <div class="panel-body">
+                    <div class="row">StartDate:&nbsp;{{eval.StartDate}}</div>
+                    <div class="row">EndDate:&nbsp;{{eval.EndDate}}</div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
@@ -86,7 +80,7 @@
         <h5>StartDate: {{startDate.substr(0, 10) || 'Not Set!'}} &nbsp; {{startDate.substr(11)}}</h5>
         <h5>EndDate: {{endDate.substr(0, 10) || 'Not Set!'}} &nbsp; {{endDate.substr(11)}}</h5>
     </div>
-        <div>
+    <div class>
             <script type="text/ng-template" id="modalTime.html">
                 <div class="modal-header">
                     <h3>Select time!</h3>
