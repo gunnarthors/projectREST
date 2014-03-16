@@ -5,6 +5,8 @@ angular.module('projectRestApp', [
     'ngRoute',
     'projectRestApp.MainCtrl',
     'projectRestApp.StudentCtrl',
+    'projectRestApp.AdminCtrl',
+    'projectRestApp.CreateCtrl',
     'projectRestApp.directive',
     'projectRestApp.service',
     'projectRestApp.factory',
