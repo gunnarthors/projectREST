@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('projectRestApp')
-    .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', '$modal', '$log', function ($scope, $route, BackEnd, $location, $modal, $log) {
-        $scope.param = $route.current.params;
-        $scope.token = $scope.param.token;
+    .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', '$modal', '$log', 'UserFactory', function ($scope, $route, BackEnd, $location, $modal, $log, UserFactory) {
+        $scope.token = UserFactory.getUserToken();
 
         $scope.createTemplate = function(){
             $location.path('/admin/createTemplate/' + $scope.token);
@@ -206,6 +205,5 @@ angular.module('projectRestApp')
                     $scope.Results = results;
                     console.log(results);
                 });
-
         };
 }]);

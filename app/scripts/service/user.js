@@ -21,6 +21,12 @@ angular.module('projectRestApp.factory', [])
             },
             getUserSSN: function() {
                 return userData.SSN;
+            },
+            setUserToken: function(Token) {
+                userData.token = Token;
+            },
+            getUserToken: function() {
+                return userData.token;
             }
         };
 
@@ -28,49 +34,4 @@ angular.module('projectRestApp.factory', [])
 
 
     }]);
-/*
-angular.module('projectRestApp.service', [])
-    .factory('UserData',[function($http){
-        return {
-            login: function(usr){
-                return $http({
-                    method: 'POST',
-                    url: 'http://dispatch.ru.is/h14/api/v1/login',
-                    data: usr
-                });
-            },
-            authRequest: function(method, url, token){
-                return $http({
-                    method: method,
-                    url: url,
-                    headers: {'Authorization': 'Basic ' + token}
-                });
-            },
-            authPOST: function(method, url, token, data){
-                return $http({
-                    method: method,
-                    url: url,
-                    headers: {'Authorization': 'Basic ' + token},
-                    data: data
-                });
-            }
-        };
-    }]);
-*/
-/*
-projectRestApp.service('UserService', function() {
-    this.user = function() {
-        return this.userData;
-    };
 
-    this.setUserFullName = function(name) {
-        this.userData.name = name;
-    };
-
-    this.getUserFullName = function() {
-        return this.userData.name;
-    };
-
-
-});
-*/
