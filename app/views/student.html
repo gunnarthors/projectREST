@@ -23,7 +23,12 @@
 </div>
 <!--div class="panel panel-info" ng-hide="teacherInf"-->
 <div class="panel panel-info">
-    <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> {{ fullName }} &nbsp;&nbsp; {{courseID}}</div>
+    <!--div class="panel-heading"><span class="glyphicon glyphicon-user"></span> {{fullName}} &nbsp;&nbsp; {{courseID}}</div-->
+
+    <div class="panel-heading">
+        &nbsp;{{courseID}}
+        <span class="glyphicon glyphicon-user pull-right"></span><p class="pull-right">{{fullName}}&nbsp;</p>
+    </div>
 
     <div class="panel-body" ng-hide="teacherInf">
 
