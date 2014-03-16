@@ -3,3 +3,7 @@
     border-color: white;
     margin-bottom: 1px;
 }
+#status {
+    float: right;
+    font-size: 8px;
+}

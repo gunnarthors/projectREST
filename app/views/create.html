@@ -64,12 +64,19 @@
                 <div class="radio" ng-repeat="answersView in questionView.Answers">
                     <input type="radio" name="radios" value="ans.TextEN"/><span>&nbsp;{{answersView.TextEN}}</span>
                 </div>
-                <!--<div ng-show="text" >-->
-                    <!--<input type="text"/>-->
-                <!--</div>-->
             </fieldset>
         </div>
     </form>
+        <form class="form-horizontal" ng-repeat="questionView in evalObject.TeacherQuestions">
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>{{$index + 1}}.&nbsp{{questionView.TextEN}}</legend>
+                    <div class="radio" ng-repeat="answersView in questionView.Answers">
+                        <input type="radio" name="radios" value="ans.TextEN"/><span>&nbsp;{{answersView.TextEN}}</span>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
     </div>
 
     <div ng-show="quest">

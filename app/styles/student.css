@@ -18,3 +18,13 @@
 #img {
     float: left;
 }
+#thumb {
+    margin-top: 10px;
+}
+#thumb-student {
+    /*float: left;*/
+    font-size: 10px;
+}
+##thumb-student-img {
+    float: right;
+}

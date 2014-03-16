@@ -42,18 +42,19 @@
 
     <div class="col-md-8">
         <legend ng-show="!showTemp">All evaluations:</legend>
-        <div class="form-horizontal" ng-repeat="eval in evaluations"  ng-show="!showTemp">
-            <div class="panel-info">
+        <div ng-repeat="eval in evaluations"  ng-show="!showTemp">
+            <div class="panel panel-info">
                 <div class="panel-heading" ng-click="showResult(eval.ID)" style="cursor:pointer">
                     {{eval.TemplateTitleEN}}
                     <p id="status">Status:&nbsp;{{eval.Status}}</p>
                 </div>
                 <div class="panel-body">
-                    <div class="row">StartDate:&nbsp;{{eval.StartDate}}</div>
-                    <div class="row">EndDate:&nbsp;{{eval.EndDate}}</div>
+                    <div class="col-md-10">
+                    <div class="row">StartDate:&nbsp;{{eval.StartDate.substr(0, 10)}} &nbsp; {{eval.StartDate.substr(11)}}</div>
+                    <div class="row">EndDate:&nbsp;{{eval.EndDate.substr(0, 10)}} &nbsp; {{eval.EndDate.substr(11)}}</div>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </div>
@@ -80,7 +81,7 @@
         <h5>StartDate: {{startDate.substr(0, 10) || 'Not Set!'}} &nbsp; {{startDate.substr(11)}}</h5>
         <h5>EndDate: {{endDate.substr(0, 10) || 'Not Set!'}} &nbsp; {{endDate.substr(11)}}</h5>
     </div>
-    <div class>
+    <div class="modal">
             <script type="text/ng-template" id="modalTime.html">
                 <div class="modal-header">
                     <h3>Select time!</h3>
