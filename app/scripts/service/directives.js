@@ -2,7 +2,6 @@
 angular.module('projectRestApp.directive', [])
     .controller('ImgCtrl', function($scope) {
         $scope.rand = Math.floor(Math.random() * 7);
-        console.log($scope.rand);
         $scope.imgArr = [
             {
                 imgURL: 'http://www.bleedingcool.com/wp-content/uploads/2012/11/donatello-movie.jpg'
