@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('projectRestApp')
+angular.module('projectRestApp.CreateCtrl', [])
     .controller('CreateCtrl',['$scope', 'BackEnd', '$location', 'UserFactory',
         function ($scope, BackEnd, $location, UserFactory) {
         $scope.isCollapsed = false;

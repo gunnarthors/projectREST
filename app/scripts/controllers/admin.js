@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('projectRestApp')
+angular.module('projectRestApp.AdminCtrl', [])
     .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', '$modal', '$log', 'UserFactory', function ($scope, $route, BackEnd, $location, $modal, $log, UserFactory) {
         $scope.token = UserFactory.getUserToken();
 
