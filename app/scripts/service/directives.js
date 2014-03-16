@@ -5,7 +5,7 @@ angular.module('projectRestApp.directive', [])
         console.log($scope.rand);
         $scope.imgArr = [
             {
-                imgURL: 'http://www.geeksofdoom.com/GoD/img/2013/06/2013-06-27-ninja_turtles_leonardo-e1372331128667.jpg'
+                imgURL: 'http://www.bleedingcool.com/wp-content/uploads/2012/11/donatello-movie.jpg'
             },
             {
                 imgURL: 'http://www.renderat.com/renders/Spiderman3.png'
@@ -25,7 +25,6 @@ angular.module('projectRestApp.directive', [])
             {
                 imgURL: 'http://img2.wikia.nocookie.net/__cb20120922002941/fantendo/images/f/fc/MarioNSMBWii.png'
             }
-
         ];
     })
     .directive('myImage', function() {
