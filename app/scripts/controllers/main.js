@@ -3,40 +3,29 @@
 
 angular.module('projectRestApp.MainCtrl', [])
     .controller('MainCtrl',['$scope', '$location', 'BackEnd', 'UserFactory', function ($scope, $location, BackEnd, UserFactory) {
-
         // log in function
         $scope.loginUsr = function() {
             BackEnd.login($scope.usr)
                 .success(function(data) {
                     $scope.name = data.User.Username;
-                    $scope.token = data.Token;
-                    console.log(data.User.Role);
+                    UserFactory.setUserToken(data.Token);
                     if(data.User.Role === 'student'){
                         UserFactory.setUserFullName(data.User.FullName);
                         UserFactory.setUsername(data.User.Username);
                         UserFactory.setUserSSN(data.User.SSN);
-                        console.log(UserFactory.getUserFullName());
-                        console.log(UserFactory.getUsername());
-                        console.log(UserFactory.getUserSSN());
-                        $location.path('/' + $scope.name + '/' + $scope.token);
+                        $location.path('/' + data.User.Username + '/' + data.Token);
                     }
                     else if(data.User.Role === 'admin'){
-                        $location.path('/admin/' + $scope.token);
+                        $location.path('/admin/' + data.Token);
                     }
                     else {
                         console.log('Something went wrong');
                     }
                 })
                 .error(function(data, status, headers) {
-                    $scope.errorMessage = 'Ooops! you entered wrong username or password, pleace try again!!!';
+                    $scope.errorMessage = 'Ooops! you entered wrong username or password, please try again!!!';
                     $scope.error = true;
                     $scope.error.header = headers;
                 });
         };
-
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
     }]);

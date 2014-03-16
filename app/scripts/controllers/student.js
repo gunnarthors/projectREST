@@ -2,13 +2,13 @@
 
 angular.module('projectRestApp.StudentCtrl', [])
     .controller('StudentCtrl',['$scope', 'BackEnd', 'UserFactory', '$route', function ($scope, BackEnd, UserFactory, $route) {
-        $scope.param = $route.current.params;
+        $scope.token = UserFactory.getUserToken();
         $scope.open = false;
         $scope.fullName = UserFactory.getUserFullName();
         $scope.teacherInf = true;
 
           // Get student courses
-        BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/courses', $scope.param.token)
+        BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/courses', $scope.token)
             .success(function(data){
                 $scope.courses = data;
                 $scope.semester = data.DateBegin;
@@ -22,7 +22,7 @@ angular.module('projectRestApp.StudentCtrl', [])
             $scope.teacherInf = false;
             $scope.courseID = ID;
             $scope.year = time.substr(0,4);
-            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + ID + '/' + $scope.year + '/teachers', $scope.param.token)
+            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + ID + '/' + $scope.year + '/teachers', $scope.token)
                 .success(function(data){
                     $scope.courseTeachers = data;
                     $scope.specialCourse = true;
@@ -37,12 +37,12 @@ angular.module('projectRestApp.StudentCtrl', [])
             $route.reload();
         };
 
-        BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.param.token)
+        BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.token)
             .success(function(data){
                 $scope.evaluations = data;
                 $scope.arr = [];
                 data.forEach(function(entry){
-                    BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.param.token)
+                    BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.token)
                         .success(function(info){
                             var obj = entry;
                             obj.TitleEN = info.TitleEN;
@@ -59,7 +59,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.currentTeacher ='';
 
         $scope.openEval = function(ID, course) {
-            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + course + '/20141/evaluations/' + ID,  $scope.param.token)
+            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + course + '/20141/evaluations/' + ID,  $scope.token)
                 .success(function(data){
                     $scope.open = true;
                     $scope.openedEvaluation = data;
@@ -67,7 +67,7 @@ angular.module('projectRestApp.StudentCtrl', [])
                     $scope.currentCourse = course;
 
                 });
-            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + course + '/20141/teachers',  $scope.param.token)
+            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + course + '/20141/teachers',  $scope.token)
                 .success(function(data){
                     $scope.currentTeacher = data[0].SSN;
                 });
@@ -95,7 +95,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.sendAns = function() {
             console.log($scope.ansArray);
             BackEnd.authPOST('POST', 'http://dispatch.ru.is/h14/api/v1/courses/' + $scope.currentCourse + '/20141/evaluations/' + $scope.currentID,
-                    $scope.param.token, $scope.ansArray)
+                    $scope.token, $scope.ansArray)
                 .success(function(){
                     $scope.ansArray = [];
                     $route.reload();
