@@ -12,7 +12,6 @@ angular.module('projectRestApp.AdminCtrl', [])
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/evaluations', $scope.token)
             .success(function(data){
                 $scope.evaluations = data;
-                console.log(data);
             })
             .error(function(status){
                 $scope.Eerror = status;
