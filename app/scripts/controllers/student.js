@@ -5,6 +5,8 @@ angular.module('projectRestApp.StudentCtrl', [])
         $scope.token = UserFactory.getUserToken();
         $scope.open = false;
         $scope.fullName = UserFactory.getUserFullName();
+        $scope.username = UserFactory.getUsername();
+        $scope.SSN = UserFactory.getUserSSN();
         $scope.teacherInf = true;
 
           // Get student courses

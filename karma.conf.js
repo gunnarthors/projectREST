@@ -55,6 +55,22 @@ module.exports = function(config) {
         autoWatch: true,
 
 
+        // coverage reporter generates the coverage
+        reporters: ['progress', 'coverage'],
+
+        preprocessors: {
+            // source files, that you wanna generate coverage for
+            // do not include tests or libraries
+            // (these files will be instrumented by Istanbul)
+            'app/scripts/*.js': ['coverage'],
+            'app/scripts/**/*.js': ['coverage']
+        },
+
+        coverageReporter: {
+            type : 'html',
+            dir : 'coverage/'
+        },
+
         // Start these browsers, currently available:
         // - Chrome
         // - ChromeCanary
@@ -63,7 +79,7 @@ module.exports = function(config) {
         // - Safari (only Mac)
         // - PhantomJS
         // - IE (only Windows)
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
 
 
         // Continuous Integration mode
