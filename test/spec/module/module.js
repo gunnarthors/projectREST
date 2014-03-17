@@ -9,7 +9,7 @@ describe('Modules projectRestApp', function() {
         });
 
         it('should be registered', function() {
-            expect(module).not.toBe(null);
+            expect(module).toBeDefined();
         });
 
         describe('Dependencies:', function() {
