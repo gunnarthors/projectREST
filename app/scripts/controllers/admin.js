@@ -61,7 +61,7 @@ angular.module('projectRestApp.AdminCtrl', [])
             if($scope.check === true){
                 $scope.startDate = $scope.formatDate($scope.dt);
             }
-            else {
+            else{
                 $scope.endDate = $scope.formatDate($scope.dt);
             }
         };
