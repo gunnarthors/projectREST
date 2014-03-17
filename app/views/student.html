@@ -16,7 +16,12 @@
                 <li class="dropdown" ng-repeat="course in courses"  ng-click="courseStuff(course.CourseID, course.DateBegin)">
                     <a href=""><span class="glyphicon glyphicon-book"></span> {{course.NameIS}}</a>
                 </li>
-                <li><a ng-href="#/index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li>
+                    <a ng-href="#/index">
+                        <span class="glyphicon glyphicon-log-out logout"></span>
+                        <span class="logout">Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -33,6 +38,7 @@
     <div class="panel-body" ng-hide="teacherInf">
 
         <div class="row">
+            <!--div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers"-->
             <div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers">
                 <div class="thumbnail"  id="teacherInfo">
                     <img id="img" height="42" width="42" src="{{teacher.ImageURL}}" >
@@ -47,21 +53,37 @@
 </div>
 
 <div class="row" ng-show="!open">
-    <div class="col-md-4">
+    <div class="col-md-6">
 
-        <h5>My Evaluations:</h5>
-        <ul class="list-unstyled">
+        <!--h5>My Evaluations:</h5-->
+        <!--ul class="list-unstyled">
             <li ng-repeat="a in arr"><a class="evals" ng-click="openEval(a.ID, a.CourseID)" >{{a.CourseID}}</br>{{a.TitleEN}} </a></li>
-        </ul>
+        </ul-->
+        <div class="panel panel-default">
+            <div class="panel-heading">My Evaluations</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="a in arr">
+                        <a class="evals" ng-click="openEval(a.ID, a.CourseID)">
+                        {{a.CourseID}}
+                        <span class="pull-right">{{a.TitleEN}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!--<div class="col-md-8">-->
-        <div class="row">
-            <div class="col-md-7 col-md-7" ng-show="teacherInf">
+        <div class="row text-center">
+            <div class="col-md-6 col-md-6" ng-show="teacherInf">
+            <!--div class="col-md-7 col-md-7" ng-show="teacherInf"-->
                 <div ng-controller="ImgCtrl" class="thumbnail" id="thumb">
                     <div my-image id="thumb-student-Img"></div>
                     <div id="thumb-student">
-                        <p >&nbsp;{{fullName}}</p>
+                        <p>&nbsp;{{fullName}}</p>
+                        <p>&nbsp;E-mail: {{username}}@ru.is</p>
+                        <p>&nbsp;SSN: {{SSN}}</p>
                     </div>
 
 
