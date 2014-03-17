@@ -32,7 +32,6 @@ angular.module('projectRestApp.StudentCtrl', [])
                 .error(function(status){
                     $scope.TError = status;
                 });
-
         };
 
         $scope.home = function() {
@@ -96,7 +95,6 @@ angular.module('projectRestApp.StudentCtrl', [])
             $scope.ansArray.push(ansObj);
         };
         $scope.sendAns = function() {
-            console.log($scope.ansArray);
             BackEnd.authPOST('POST', 'http://dispatch.ru.is/h14/api/v1/courses/' + $scope.currentCourse + '/20141/evaluations/' + $scope.currentID,
                     $scope.token, $scope.ansArray)
                 .success(function(){

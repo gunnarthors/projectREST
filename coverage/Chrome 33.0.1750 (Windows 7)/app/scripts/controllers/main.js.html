@@ -179,20 +179,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">./app/scripts/controllers/main.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">11.76% <small>(2 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(16 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(4 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">11.76% <small>(2 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(16 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./app/scripts/controllers\</a> &#187; main.js</div>
@@ -228,36 +228,32 @@
 27
 28
 29
-30
-31
-32</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+30</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,30 +261,28 @@
 'use strict';
 &nbsp;
 angular.module('projectRestApp.MainCtrl', [])
-    .controller('MainCtrl',['$scope', '$location', 'BackEnd', 'UserFactory', <span class="fstat-no" title="function not covered" >function ($scope, $location, BackEnd, UserFactory) {</span>
+    .controller('MainCtrl',['$scope', '$location', 'BackEnd', 'UserFactory', function ($scope, $location, BackEnd, UserFactory) {
         // log in function
-<span class="cstat-no" title="statement not covered" >        $scope.loginUsr = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >            BackEnd.login($scope.usr)</span>
-                .success(<span class="fstat-no" title="function not covered" >function(data) {</span>
-<span class="cstat-no" title="statement not covered" >                    $scope.name = data.User.Username;</span>
-<span class="cstat-no" title="statement not covered" >                    UserFactory.setUserToken(data.Token);</span>
-<span class="cstat-no" title="statement not covered" >                    if(data.User.Role === 'student'){</span>
-<span class="cstat-no" title="statement not covered" >                        UserFactory.setUserFullName(data.User.FullName);</span>
-<span class="cstat-no" title="statement not covered" >                        UserFactory.setUsername(data.User.Username);</span>
-<span class="cstat-no" title="statement not covered" >                        UserFactory.setUserSSN(data.User.SSN);</span>
-<span class="cstat-no" title="statement not covered" >                        $location.path('/' + data.User.Username + '/' + data.Token);</span>
-                    }
-                    else <span class="cstat-no" title="statement not covered" >if(data.User.Role === 'admin'){</span>
-<span class="cstat-no" title="statement not covered" >                        $location.path('/admin/' + data.Token);</span>
+        $scope.usr = {};
+        $scope.loginUsr = function() {
+            BackEnd.login($scope.usr)
+                .success(function(data) {
+                    $scope.name = data.User.Username;
+                    UserFactory.setUserToken(data.Token);
+                    if(data.User.Role === 'student'){
+                        UserFactory.setUserFullName(data.User.FullName);
+                        UserFactory.setUsername(data.User.Username);
+                        UserFactory.setUserSSN(data.User.SSN);
+                        $location.path('/' + data.User.Username + '/' + data.Token);
                     }
                     else {
-<span class="cstat-no" title="statement not covered" >                        console.log('Something went wrong');</span>
+                        $location.path('/admin/' + data.Token);
                     }
                 })
-                .error(<span class="fstat-no" title="function not covered" >function(data, status, headers) {</span>
-<span class="cstat-no" title="statement not covered" >                    $scope.errorMessage = 'Ooops! you entered wrong username or password, please try again!!!';</span>
-<span class="cstat-no" title="statement not covered" >                    $scope.error = true;</span>
-<span class="cstat-no" title="statement not covered" >                    $scope.error.header = headers;</span>
+                .error(function(status, headers) {
+                    $scope.errorMessage = 'Ooops! you entered wrong username or password, please try again!!!';
+                    $scope.error = true;
+                    $scope.error.header = headers;
                 });
         };
     }]);
@@ -297,7 +291,7 @@ angular.module('projectRestApp.MainCtrl', [])
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 16 2014 23:33:15 GMT+0000 (Greenwich Standard Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 17 2014 15:34:41 GMT+0000 (Greenwich Standard Time)</div>
 </div>
 
 <script src="../prettify.js"></script>

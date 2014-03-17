@@ -179,20 +179,20 @@
     </style>
 </head>
 <body>
-<div class="header medium">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">./app/scripts/service/user.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">50% <small>(6 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(12 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">33.33% <small>(3 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(9 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">50% <small>(6 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(12 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./app/scripts/service\</a> &#187; user.js</div>
@@ -240,31 +240,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -279,26 +279,26 @@ angular.module('projectRestApp.factory', [])
     .factory('UserFactory', [function() {
         var userData = {};
         return {
-            setUserFullName: <span class="fstat-no" title="function not covered" >function(name) {</span>
-<span class="cstat-no" title="statement not covered" >                userData.fullName = name;</span>
+            setUserFullName: function(name) {
+                userData.fullName = name;
             },
             getUserFullName: function() {
                 return userData.fullName;
             },
-            setUsername: <span class="fstat-no" title="function not covered" >function(name) {</span>
-<span class="cstat-no" title="statement not covered" >                userData.username = name;</span>
+            setUsername: function(name) {
+                userData.username = name;
             },
-            getUsername: <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >                return userData.username;</span>
+            getUsername: function() {
+                return userData.username;
             },
-            setUserSSN: <span class="fstat-no" title="function not covered" >function(SSN) {</span>
-<span class="cstat-no" title="statement not covered" >                userData.SSN = SSN;</span>
+            setUserSSN: function(SSN) {
+                userData.SSN = SSN;
             },
-            getUserSSN: <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >                return userData.SSN;</span>
+            getUserSSN: function() {
+                return userData.SSN;
             },
-            setUserToken: <span class="fstat-no" title="function not covered" >function(Token) {</span>
-<span class="cstat-no" title="statement not covered" >                userData.token = Token;</span>
+            setUserToken: function(Token) {
+                userData.token = Token;
             },
             getUserToken: function() {
                 return userData.token;
@@ -315,7 +315,7 @@ angular.module('projectRestApp.factory', [])
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 16 2014 23:33:15 GMT+0000 (Greenwich Standard Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 17 2014 15:34:41 GMT+0000 (Greenwich Standard Time)</div>
 </div>
 
 <script src="../prettify.js"></script>
