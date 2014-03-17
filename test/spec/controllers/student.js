@@ -128,27 +128,61 @@ describe('Controller: StudentCtrl', function () {
         $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/courses', $rootScope.token).respond(401, data);
         $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/evaluations', $rootScope.token).respond(401);
         $rootScope.chosen('Frustrated', 39);
-//        var length = scope.ansArray.length;
-//  expect(ansObj.QuestionID).toBe(39);
+        var count = 0;
+        var length = $rootScope.ansArray.length;
         if($rootScope.ansArray.length === 0){
             expect($rootScope.ansArray).toEqual([]);
         }
+
         if($rootScope.ansArray.length > 0){
-            if(data.QuestionID === 39){
-                expect($rootScope.QuestionID).not.toContain(39);
-            }
+            console.log($rootScope.ansArray);
+            $rootScope.ansArray.forEach(function(entry){
+                count = count + 1;
+                if(data.QuestionID === 39){
+                    expect($rootScope.ansArray.indexOf(entry)).toBe(0);
+                }
+                else{
+
+                }
+            });
+
         }
-//        if(scope.ansArray.length > 0) {
-//            scope.ansArray.forEach(function(data){
-//                expect(scope.ansArray.QuestionID).toContain(39);
-//                if(data.QuestionID === 39){
-//                    expect(scope.ansArray).not.toContain(39);
-//                }
-//                if (data.QuestionID !== 100){
-//                    expect(scope.ansArray.length).toEqual(length);
-//                }
-//            });
-//        }
+        expect(length).toEqual(count);
+//     $scope.ansArray = [];
+//        $scope.chosen = function(value, ID) {
+//            console.log(value + '  ' + ID);
+//            var ansObj = {
+//                QuestionID: ID,
+//                TeacherSSN: $scope.currentTeacher,
+//                Value: value
+//            };
+//            if($scope.ansArray.length > 0){
+//                $scope.ansArray.forEach(function(data){
+//                    if(data.QuestionID === ID ){
+//                        var index =  $scope.ansArray.indexOf(data);
+//                        if(index > -1) {
+//                            $scope.ansArray.splice(index, 1);
+//                        }
+//                    }
+//                });
+//            }
+//            $scope.ansArray.push(ansObj);
         $httpBackend.flush();
     });
 });
+
+//BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.token)
+//    .success(function(data){
+//        $scope.evaluations = data;
+//        $scope.arr = [];
+//        data.forEach(function(entry){
+//            BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.token)
+//                .success(function(info){
+//                    var obj = entry;
+//                    obj.TitleEN = info.TitleEN;
+//                    $scope.arr.push(obj);
+//                })
+//                .error(function(){
+//                    console.log('ERROR');
+//                });
+//        });

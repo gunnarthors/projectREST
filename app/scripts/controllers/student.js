@@ -83,15 +83,26 @@ angular.module('projectRestApp.StudentCtrl', [])
                 Value: value
             };
             if($scope.ansArray.length > 0){
+                console.log($scope.ansArray);
                 $scope.ansArray.forEach(function(data){
                     if(data.QuestionID === ID ){
                         var index =  $scope.ansArray.indexOf(data);
                         if(index > -1) {
                             $scope.ansArray.splice(index, 1);
                         }
+                        else{
+                            console.log('error');
+                        }
+                    }
+                    else{
+                        console.log('error');
                     }
                 });
             }
+            else{
+                $scope.ansArray = [];
+            }
+
             $scope.ansArray.push(ansObj);
         };
         $scope.sendAns = function() {

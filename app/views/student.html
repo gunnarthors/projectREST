@@ -74,24 +74,16 @@
         </div>
     </div>
 
-    <!--<div class="col-md-8">-->
-        <div class="row text-center">
-            <div class="col-md-6 col-md-6" ng-show="teacherInf">
-            <!--div class="col-md-7 col-md-7" ng-show="teacherInf"-->
-                <div ng-controller="ImgCtrl" class="thumbnail" id="thumb">
-                    <div my-image id="thumb-student-Img"></div>
-                    <div id="thumb-student">
-                        <p>&nbsp;{{fullName}}</p>
-                        <p>&nbsp;E-mail: {{username}}@ru.is</p>
-                        <p>&nbsp;SSN: {{SSN}}</p>
-                    </div>
-
-
+    <div class="col-md-6 col-md-6" ng-show="teacherInf">
+        <div ng-controller="ImgCtrl" class="thumbnail text-center" id="thumb">
+            <div my-image id="thumb-student-Img"></div>
+                <div id="thumb-student" >
+                    <p>&nbsp;{{fullName}}</p>
+                    <p>&nbsp;E-mail: {{username}}@ru.is</p>
+                    <p>&nbsp;SSN: {{SSN}}</p>
                 </div>
             </div>
         </div>
-    <!--</div>-->
-
     </div>
 </div>
 
