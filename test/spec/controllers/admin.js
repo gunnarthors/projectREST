@@ -180,6 +180,7 @@ describe('projectRestApp.AdminCtrl', function () {
 
         $rootScope.ismeridian = true;
         expect($rootScope.ismeridian).toBe(true);
+
         $httpBackend.flush();
     });
 
