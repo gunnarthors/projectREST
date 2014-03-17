@@ -170,14 +170,15 @@ describe('projectRestApp.AdminCtrl', function () {
         $httpBackend.flush();
     });
 
-    it('should test modal', function(){
-        var controller = createController();
+//    it('should test modal', function(){
+//        var controller = createController();
+//
+//        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/evaluations', $rootScope.token).respond(201, {data:'fakedata'});
+//        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $rootScope.token).respond(201, {data:'fakedata'});
+//
+//        $rootScope.openTime();
+//
+//    });
 
-        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/evaluations', $rootScope.token).respond(201, {data:'fakedata'});
-        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $rootScope.token).respond(201, {data:'fakedata'});
-
-        $rootScope.openTime();
-        
-    });
 
 });

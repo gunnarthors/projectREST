@@ -123,6 +123,7 @@ describe('Controller: StudentCtrl', function () {
             DateBegin: 'fake',
             CourseID: 'fake'
         };
+
         createController();
         $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/courses', $rootScope.token).respond(401, data);
         $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/evaluations', $rootScope.token).respond(401);
