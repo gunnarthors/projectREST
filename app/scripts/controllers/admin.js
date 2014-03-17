@@ -18,6 +18,7 @@ angular.module('projectRestApp.AdminCtrl', [])
             });
 
         // Get all templates
+
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $scope.token)
             .success(function(data){
                 $scope.templates = data;
@@ -25,6 +26,7 @@ angular.module('projectRestApp.AdminCtrl', [])
             .error(function(status){
                 $scope.Eerror = status;
             });
+
 
         // Get and show selected template
         $scope.openTemp = function(tempid){
@@ -59,7 +61,7 @@ angular.module('projectRestApp.AdminCtrl', [])
             if($scope.check === true){
                 $scope.startDate = $scope.formatDate($scope.dt);
             }
-            else if($scope.check === false){
+            else {
                 $scope.endDate = $scope.formatDate($scope.dt);
             }
         };
@@ -91,9 +93,15 @@ angular.module('projectRestApp.AdminCtrl', [])
             if(month.length === 1) {
                 month = '0' + month;
             }
+            else {
+                month = month;
+            }
             var day = date.getDate().toString();
             if(day.length === 1) {
                 day = '0' + day;
+            }
+            else {
+                day = day;
             }
             return year + '-' + month + '-' + day;
         };

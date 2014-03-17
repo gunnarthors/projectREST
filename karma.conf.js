@@ -48,7 +48,7 @@ module.exports = function(config) {
             'app/scripts/**/*.js': ['coverage']
         },
 
-        // coverage report type html
+
         coverageReporter: {
             type : 'html',
             dir : 'coverage/'
