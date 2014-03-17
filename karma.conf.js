@@ -18,27 +18,9 @@ module.exports = function(config) {
             'app/bower_components/angular-route/angular-route.js',
             'app/scripts/*.js',
             'app/scripts/**/*.js',
-//            'test/mock/**/*.js',
+            'test/mock/**/*.js',
             'test/spec/**/*.js'
         ],
-
-        preprocessors: {
-            '**app/scripts/**/*.js': 'coverage'
-        },
-
-        reporters: ['progress', 'coverage'],
-
-//        coverageReporter: {
-//            type: 'text-summary'
-//        },
-
-        plugins: [
-            'karma-jasmine',
-            'karma-coverage',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-        ],
-
 
         // list of files / patterns to exclude
         exclude: [],
@@ -52,7 +34,7 @@ module.exports = function(config) {
 
 
         // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
+        autoWatch: false,
 
 
         // coverage reporter generates the coverage
@@ -66,6 +48,7 @@ module.exports = function(config) {
             'app/scripts/**/*.js': ['coverage']
         },
 
+        // coverage report type html
         coverageReporter: {
             type : 'html',
             dir : 'coverage/'

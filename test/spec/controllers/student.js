@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Controller: StudentCtrl', function () {
-    var $httpBackend, createController;
+//    var $httpBackend, createController;
     // load the controller's module
     beforeEach(module('projectRestApp'));
 
@@ -11,10 +11,10 @@ describe('Controller: StudentCtrl', function () {
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope, $injector) {
 
-        $httpBackend = $injector.get('httpBackend');
-        createController = function() {
-            return $controller('StudentCtrl', {'$scope': $rootScope});
-        }
+//        $httpBackend = $injector.get('httpBackend');
+//        createController = function() {
+//            return $controller('StudentCtrl', {'$scope': $rootScope});
+//        };
 
         scope = $rootScope.$new();
 
