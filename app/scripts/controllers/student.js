@@ -75,6 +75,7 @@ angular.module('projectRestApp.StudentCtrl', [])
 
         $scope.ansArray = [];
         $scope.chosen = function(value, ID) {
+            console.log(value + '  ' + ID);
             var ansObj = {
                 QuestionID: ID,
                 TeacherSSN: $scope.currentTeacher,
