@@ -38,6 +38,13 @@ module.exports = function (grunt) {
             files: ['test/spec/{,*/}*.js'],
             tasks: ['newer:jshint:test', 'karma']
         },
+        less: {
+            files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
+            tasks: ['less:server'],
+            options: {
+                livereload: true
+            }
+        },
         styles: {
             files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
             tasks: ['newer:copy:styles', 'autoprefixer']
@@ -51,6 +58,8 @@ module.exports = function (grunt) {
             },
             files: [
                 '<%= yeoman.app %>/{,*/}*.html',
+                '<%= yeoman.app %>/styles/{,*/}*.css',
+                '<%= yeoman.app %>/styles/{,*/}*.less',
                 '.tmp/styles/{,*/}*.css',
                 '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
@@ -87,6 +96,19 @@ module.exports = function (grunt) {
         dist: {
             options: {
                 base: '<%= yeoman.dist %>'
+            }
+        }
+    },
+    less: {
+        server: {
+            options: {
+                paths: ['<%= yeoman.app %>/styles']
+            },
+            files: {
+                '<%= yeoman.app %>/styles/admin.css': '<%= yeoman.app %>/styles/admin.less',
+                '<%= yeoman.app %>/styles/create.css': '<%= yeoman.app %>/styles/create.less',
+                '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.less',
+                '<%= yeoman.app %>/styles/student.css': '<%= yeoman.app %>/styles/student.less'
             }
         }
     },
@@ -341,12 +363,14 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
+            'less:server',
             'clean:server',
             'bower-install',
             'concurrent:server',
             'autoprefixer',
             'connect:livereload',
             'watch'
+
         ]);
     });
 
