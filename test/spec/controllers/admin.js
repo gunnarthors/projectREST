@@ -177,7 +177,8 @@ describe('projectRestApp.AdminCtrl', function () {
         $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $rootScope.token).respond(201, {data:'fakedata'});
 
         $rootScope.openTime();
-        
+        $httpBackend.flush();
+
     });
 
 });
