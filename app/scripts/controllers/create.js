@@ -18,7 +18,6 @@ angular.module('projectRestApp.CreateCtrl', [])
             $scope.evalObject.CourseQuestions = [];
             $scope.evalObject.TeacherQuestions = [];
             $scope.rows = true;
-            console.log($scope.evalObject);
         };
 
         $scope.question = {};
@@ -39,8 +38,8 @@ angular.module('projectRestApp.CreateCtrl', [])
         };
 
         $scope.text = function() {
-            $scope.question.Type = 'text';
-        };
+                $scope.question.Type = 'text';
+            };
 //        $scope.show = function() {
 //            if($scope.evalObject.CourseQuestions.Type === 'text') {
 //                console.log();
@@ -59,10 +58,12 @@ angular.module('projectRestApp.CreateCtrl', [])
         };
         $scope.addTeacherQuestion = function() {
             $scope.output = $scope.question;
+            console.log(  $scope.evalObject.TeacherQuestions);
             $scope.evalObject.TeacherQuestions.push($scope.question);
             $scope.reset();
         };
         $scope.saveTemplate = function() {
+            console.log($scope.evalObject);
             BackEnd.authPOST('POST', 'http://dispatch.ru.is/h14/api/v1/evaluationtemplates', $scope.token, $scope.evalObject)
                 .success(function() {
                     $scope.success = 'Your template has been saved successfully! You will be directed home.';
