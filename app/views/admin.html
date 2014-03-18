@@ -13,7 +13,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="Template-button Template-button--hover btn btn-primary btn-xs"  ng-click="createTemplate()">Create Template</a></li>
+                    <li><a class="Admin-button--create btn btn-primary btn-xs"  ng-click="createTemplate()">Create Template</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Templates <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu">
                             <li ng-repeat="template in templates">
@@ -51,7 +51,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading" ng-click="showResult(eval.ID)" style="cursor:pointer">
                     {{eval.TemplateTitleEN}}
-                    <p class="Evaluations-status" id="status">Status:&nbsp;{{eval.Status}}</p>
+                    <p class="Admin-evaluations-status" id="status">Status:&nbsp;{{eval.Status}}</p>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-10">
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div class="row" ng-show="showTemp">
+<div class="row Admin-templates-container" ng-show="showTemp">
     <div>
         <!--button class="btn btn-default" ng-click="reload()">Back</button-->
         <h4>Set Date</h4>
@@ -108,10 +108,10 @@
             <!--<button class="btn btn-default" ng-click="openTime()">Open me!</button>-->
     </div>
         <div>
-            <button class="btn btn-default" ng-click="makePublic()">Make public!</button>
+            <button class="btn btn-primary" ng-click="makePublic()">Make public!</button>
         </div>
 
-        <div class="well well-lg">
+        <div class="well well-lg Admin-templates-evaluations-container">
             <h4>{{evalTemp.TitleEN}}</h4>
             <h5>{{evalTemp.IntroTextEN}}</h5>
 
@@ -152,7 +152,9 @@
 
             <span ng-repeat="quest in course.questions">{{quest.Qstring}} </br>
                 <ul><li ng-repeat="(key, value) in quest.results">{{key}}: {{value}}</li></ul>
+                <div ac-chart="chartType" ac-data="chartData[$index]" ac-config="chartConfig" class='Admin-evaluation-results-chart'></div>
             </span>
+
         </div>
     </div>
 </div>

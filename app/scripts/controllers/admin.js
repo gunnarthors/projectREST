@@ -221,7 +221,7 @@ angular.module('projectRestApp.AdminCtrl', [])
                     $scope.formatResults(results);
                 });
         };
-
+        $scope.chartData = [];
         $scope.formatResults = function(data){
             $scope.resArr = [];
             data.Courses.forEach(function(entry){
@@ -237,6 +237,16 @@ angular.module('projectRestApp.AdminCtrl', [])
                         countobj.Qstring = quest.TextEN;
                         quest.TextResults.forEach(function(i){ count[i] = (count[i] || 0) + 1;});
                         countobj.results = count;
+                        var ser = [];
+                        var yax = [];
+                        var dat = [];
+                        for(var key in countobj.results){
+                            ser.push(key);
+                            yax.push(countobj.results[key]);
+                        }
+                        dat.push({x: '', y: yax});
+                        countobj.chart = {series: ser, data: dat};
+                        $scope.chartData.push(countobj.chart);
                         questArr.push(countobj);
                     }
                 });
@@ -244,4 +254,16 @@ angular.module('projectRestApp.AdminCtrl', [])
                 $scope.resArr.push(courseRes);
             });
         };
+
+        $scope.chartConfig = {
+            labels: false,
+            title: '',
+            legend: {
+                display: true,
+                position: 'right'
+            }
+        };
+
+        $scope.chartType = 'bar';
+
 }]);
