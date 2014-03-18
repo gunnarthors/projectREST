@@ -219,7 +219,6 @@ angular.module('projectRestApp.AdminCtrl', [])
                     $scope.showRes = true;
                     $scope.Results = results;
                     $scope.formatResults(results);
-                    console.log(results);
                 });
         };
 

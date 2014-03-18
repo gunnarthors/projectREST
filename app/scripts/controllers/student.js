@@ -41,12 +41,10 @@ angular.module('projectRestApp.StudentCtrl', [])
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.token)
             .success(function(data){
                 $scope.evaluations = data;
-                console.log(data);
                 $scope.arr = [];
                 data.forEach(function(entry){
                     BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.token)
                         .success(function(info){
-                            console.log(info);
                             var obj = entry;
                             obj.TitleEN = info.TitleEN;
                             $scope.arr.push(obj);
@@ -78,14 +76,12 @@ angular.module('projectRestApp.StudentCtrl', [])
 
         $scope.ansArray = [];
         $scope.chosen = function(value, ID) {
-            console.log(value + '  ' + ID);
             var ansObj = {
                 QuestionID: ID,
                 TeacherSSN: $scope.currentTeacher,
                 Value: value
             };
             if($scope.ansArray.length > 0){
-                console.log('arra ' + $scope.ansArray);
                 $scope.ansArray.forEach(function(data){
                     if(data.QuestionID === ID ){
                         var index =  $scope.ansArray.indexOf(data);
