@@ -132,7 +132,9 @@
                 <div class="well well-lg">
                     <fieldset>
                         <legend>{{$index + 1}}. &nbsp;{{Tquest.TextEN}}</legend>
-                        <input type="text" class="form-control"/>
+                        <div class="radio" ng-repeat="wer in Tquest.Answers">
+                            <input type="radio" name="radios" value="wer.TextEN"/><span>&nbsp;{{wer.TextEN}}</span>
+                        </div>
                     </fieldset>
                 </div>
             </form>

@@ -49,8 +49,9 @@
         <h4>{{evalObject.TitleEN}}</h4>
         <h5>{{evalObject.IntroTextEN}}</h5>
 
-    <h5 ng-show="course">Course Questions:</h5>
+
     <form class="form-horizontal" ng-repeat="questionView in evalObject.CourseQuestions">
+        <h5 ng-show="course">Course questions</h5>
         <div class="well well-lg">
             <fieldset>
                 <legend>{{$index + 1}}.&nbsp{{questionView.TextEN}}</legend>
@@ -60,19 +61,22 @@
             </fieldset>
         </div>
     </form>
-    <h5 ng-show="teacher">Teacher Questions:</h5>
+
     <form class="form-horizontal" ng-repeat="questionView in evalObject.TeacherQuestions">
+        <h5 ng-show="teacher">Teacher questions</h5>
         <div class="well well-lg">
             <fieldset>
                 <legend>{{$index + 1}}.&nbsp{{questionView.TextEN}}</legend>
-                <input type="text" class="form-control">
+                <div class="radio" ng-repeat="answersView in questionView.Answers">
+                    <input type="radio" name="radios" value="ans.TextEN"/><span>&nbsp;{{answersView.TextEN}}</span>
+                </div>
             </fieldset>
         </div>
     </form>
 </div>
 
     <div ng-show="quest">
-        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed; isColl = true; multi()">Course question</button>
+        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed; isColl = true; multi()">Multi choice question</button>
         <div ng-hide="isCollapsed">
             <div class="well well-lg">
                 <form name="mPollForm" ng-submit="submitForm(mPollForm.$valid)" novalidate>
@@ -95,29 +99,14 @@
                     <div class="col-xs-12">
                         <button type="button" class="btn btn-primary btn-s" ng-click="addChoice()">
                             <span class="glyphicon glyphicon-plus"></span>Add choice</button>
-                        <button type="button" class="btn btn-default" ng-click="addCourseQuestion(); isCollapsed = !isCollapsed; course = true">
-                            <span class="glyphicon glyphicon-plus"></span>Save question</button>
                     </div>
                 </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div ng-show="quest">
-        <button class="btn btn-default" ng-click="isColl = !isColl; isCollapsed = true; text()">Teacher question</button>
-        <div ng-hide="isColl">
-            <div class="well well-lg">
-                <form name="pollForm" ng-submit="submitForm(pollForm.$valid)" novalidate>
-                    <div class="form-group"  ng-class="{ 'has-error' : pollForm.question.$invalid && !pollForm.question.$pristine }">
-                        <label for="pollQuestion">Question</label>
-                        <input type="text" ng-model="question.TextEN" class="form-control" name="question" required>
-                        <p ng-show="pollForm.question.$invalid && !pollForm.question.$pristine" class="help-block">Question is required!</p>
-                    </div>
-
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="button" class="btn btn-default" ng-click="addTeacherQuestion(); isColl = !isColl; teacher = true">
-                        <span class="glyphicon glyphicon-plus"></span>Save as teacher question</button>
+                        <button type="button" class="btn btn-default" ng-click="addCourseQuestion(); isCollapsed = !isCollapsed; course=true">
+                            <span class="glyphicon glyphicon-plus"></span>Save as course question</button>
+                        <button type="button" class="btn btn-default" ng-click="addTeacherQuestion(); isCollapsed = !isCollapsed">
+                            <span class="glyphicon glyphicon-plus"></span>Save as teacher question</button>
                     </div>
                 </div>
                 </form>

@@ -1,6 +1,5 @@
 
 <div id="heads" class="header">
-    <!--**************************ath laga id upp a css ****************************-->
     <nav id="head" class="navbar navbar-default">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -26,10 +25,7 @@
         </div>
     </nav>
 </div>
-<!--div class="panel panel-info" ng-hide="teacherInf"-->
 <div class="panel panel-info">
-    <!--div class="panel-heading"><span class="glyphicon glyphicon-user"></span> {{fullName}} &nbsp;&nbsp; {{courseID}}</div-->
-
     <div class="panel-heading">
         &nbsp;{{courseID}}
         <span class="glyphicon glyphicon-user pull-right"></span><p class="pull-right">{{fullName}}&nbsp;</p>
@@ -38,7 +34,6 @@
     <div class="panel-body" ng-hide="teacherInf">
 
         <div class="row">
-            <!--div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers"-->
             <div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers">
                 <div class="thumbnail"  id="teacherInfo">
                     <img id="img" height="42" width="42" src="{{teacher.ImageURL}}" >
