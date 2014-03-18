@@ -21,6 +21,7 @@ Navigate to projectRest directory.
 Execute these commands:
 ```
 $ npm install
+$ bower install
 $ grunt build
 ```
 That will build the project into a dist directroy.
