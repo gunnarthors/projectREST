@@ -8,15 +8,22 @@
 .Admin-header-logout {
   color: #e25e5e;
 }
-.Evaluations-status {
+.Admin-evaluations-status {
   float: right;
   font-size: 13px;
 }
-.navbar-default .navbar-nav > li > a.Template-button {
+.Admin-templates-container {
+  margin-left: -1px;
+  margin-right: -1px;
+}
+.Admin-templates-evaluations-container {
+  margin-top: 10px;
+}
+.navbar-default .navbar-nav > li > a.Admin-button--create {
   color: white;
   font-size: 14px;
 }
-.navbar-default .navbar-nav > li > a.Template-button--hover:hover {
+.navbar-default .navbar-nav > li > a.Admin-button--create:hover {
   color: black;
   background-color: #e7e7e7;
 }
@@ -46,6 +53,10 @@
 }
 /* - Variables - */
 /* - End Variables - */
+.form-group.Login-form {
+  margin-right: -1px;
+  margin-left: -1px;
+}
 /* Space out content a bit */
 body {
   padding-top: 20px;
@@ -92,11 +103,3 @@ body {
     margin-bottom: 30px;
   }
 }
-/* ToDo: Delete this stuff below... */
-/* Everything but the jumbotron gets side spacing for mobile first views */
-/*.header,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-*/
