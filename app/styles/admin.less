@@ -1,19 +1,26 @@
-#head {
-  background-color: white;
-  border-color: white;
+/* -- Admin Interface -- */
+
+.Admin-header {
+  background-color: @Header-background-color;
+  border-color: @Header-border-color;
   margin-bottom: 1px;
 }
-#status {
+
+.Admin-header-logout {
+  color: @logout-color;
+}
+
+.Evaluations-status {
   float: right;
   font-size: 13px;
 }
 
-.navbar-default .navbar-nav > li > a.tmplBtn {
+.navbar-default .navbar-nav > li > a.Template-button {
   color: white;
   font-size: 14px;
 }
 
-.navbar-default .navbar-nav > li > a.tmplBtn:hover {
+.navbar-default .navbar-nav > li > a.Template-button--hover:hover {
   color: black;
-  background-color: #e7e7e7;
+  background-color: @Template-button-color--hover;
 }

@@ -1,6 +1,7 @@
 
-<div id="heads" class="header">
-    <nav id="head" class="navbar navbar-default">
+<div class="header">
+    <!--**************************ath laga id upp a css ****************************-->
+    <nav class="navbar navbar-default Student-header">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -17,8 +18,8 @@
                 </li>
                 <li>
                     <a ng-href="#/index">
-                        <span class="glyphicon glyphicon-log-out logout"></span>
-                        <span class="logout">Logout</span>
+                        <span class="glyphicon glyphicon-log-out Student-header-logout"></span>
+                        <span class="Student-header-logout">Logout</span>
                     </a>
                 </li>
             </ul>
@@ -35,8 +36,8 @@
 
         <div class="row">
             <div class="col-sm-6 col-md-4" ng-repeat="teacher in courseTeachers">
-                <div class="thumbnail"  id="teacherInfo">
-                    <img id="img" height="42" width="42" src="{{teacher.ImageURL}}" >
+                <div class="thumbnail Teacher-info">
+                    <img class="Teacher-info-image" height="42" width="42" src="{{teacher.ImageURL}}" >
                     <div class="caption">
                         <p>&nbsp;{{teacher.FullName}}</p>
                         <a href="mailto:{{teacher.Email}}">&nbsp;{{teacher.Email}}</a>
@@ -49,17 +50,12 @@
 
 <div class="row" ng-show="!open">
     <div class="col-md-6">
-
-        <!--h5>My Evaluations:</h5-->
-        <!--ul class="list-unstyled">
-            <li ng-repeat="a in arr"><a class="evals" ng-click="openEval(a.ID, a.CourseID)" >{{a.CourseID}}</br>{{a.TitleEN}} </a></li>
-        </ul-->
         <div class="panel panel-default">
             <div class="panel-heading">My Evaluations</div>
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="a in arr">
-                        <a class="evals" ng-click="openEval(a.ID, a.CourseID)">
+                        <a class="Evaluations" ng-click="openEval(a.ID, a.CourseID)">
                         {{a.CourseID}}
                         <span class="pull-right">{{a.TitleEN}}</span>
                         </a>
@@ -71,8 +67,8 @@
 
     <div class="col-md-6 col-md-6" ng-show="teacherInf">
         <div ng-controller="ImgCtrl" class="thumbnail text-center" id="thumb">
-            <div my-image id="thumb-student-Img"></div>
-                <div id="thumb-student" >
+            <div my-image class="Student-image" id="thumb-student-Img"></div>
+                <div class="Student-info" id="thumb-student" >
                     <p>&nbsp;{{fullName}}</p>
                     <p>&nbsp;E-mail: {{username}}@ru.is</p>
                     <p>&nbsp;SSN: {{SSN}}</p>
