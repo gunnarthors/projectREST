@@ -41,6 +41,7 @@ angular.module('projectRestApp.StudentCtrl', [])
         BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.token)
             .success(function(data){
                 $scope.evaluations = data;
+                console.log(data);
                 $scope.arr = [];
                 data.forEach(function(entry){
                     BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.token)
@@ -84,7 +85,7 @@ angular.module('projectRestApp.StudentCtrl', [])
                 Value: value
             };
             if($scope.ansArray.length > 0){
-                console.log($scope.ansArray);
+                console.log('arra ' + $scope.ansArray);
                 $scope.ansArray.forEach(function(data){
                     if(data.QuestionID === ID ){
                         var index =  $scope.ansArray.indexOf(data);
@@ -95,15 +96,8 @@ angular.module('projectRestApp.StudentCtrl', [])
                             console.log('error');
                         }
                     }
-                    else{
-                        console.log('error');
-                    }
                 });
             }
-            else{
-                $scope.ansArray = [];
-            }
-
             $scope.ansArray.push(ansObj);
         };
         $scope.sendAns = function() {
