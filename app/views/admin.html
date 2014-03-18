@@ -1,7 +1,7 @@
 
 <div  class="header">
     <div>
-        <nav id="head" class="navbar navbar-default">
+        <nav class="navbar navbar-default Admin-header">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="btn btn-primary btn-xs tmplBtn"  ng-click="createTemplate()">Create Template</a></li>
+                    <li><a class="Template-button Template-button--hover btn btn-primary btn-xs"  ng-click="createTemplate()">Create Template</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Templates <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu">
                             <li ng-repeat="template in templates">
@@ -23,8 +23,8 @@
                     </li>
                     <li>
                         <a ng-href="#/index">
-                            <span class="glyphicon glyphicon-log-out logout"></span>
-                            <span class="logout"> Logout</span></a>
+                            <span class="glyphicon glyphicon-log-out Admin-header-logout"></span>
+                            <span class="Admin-header-logout"> Logout</span></a>
                     </li>
                 </ul>
             </div>
@@ -51,7 +51,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading" ng-click="showResult(eval.ID)" style="cursor:pointer">
                     {{eval.TemplateTitleEN}}
-                    <p id="status">Status:&nbsp;{{eval.Status}}</p>
+                    <p class="Evaluations-status" id="status">Status:&nbsp;{{eval.Status}}</p>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-10">
