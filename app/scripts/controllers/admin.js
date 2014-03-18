@@ -4,6 +4,7 @@ angular.module('projectRestApp.AdminCtrl', [])
     .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', '$modal', '$log', 'UserFactory', function ($scope, $route, BackEnd, $location, $modal, $log, UserFactory) {
         $scope.showEval = true;
         $scope.showTemp = false;
+        $scope.showRes = false;
         $scope.token = UserFactory.getUserToken();
 
         $scope.createTemplate = function(){
@@ -39,6 +40,7 @@ angular.module('projectRestApp.AdminCtrl', [])
                 $scope.currID = tempid;
                 $scope.showTemp = true;
                 $scope.showEval = false;
+                $scope.showRes = false;
             })
             .error(function(status){
                 $scope.Terror = status;
@@ -212,8 +214,35 @@ angular.module('projectRestApp.AdminCtrl', [])
         $scope.showResult = function(id){
             BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/evaluations/' + id, $scope.token)
                 .success(function(results){
+                    $scope.showEval = false;
+                    $scope.showTemp = false;
+                    $scope.showRes = true;
                     $scope.Results = results;
+                    $scope.formatResults(results);
                     console.log(results);
                 });
+        };
+
+        $scope.formatResults = function(data){
+            $scope.resArr = [];
+            data.Courses.forEach(function(entry){
+                var courseRes = {
+                    courseID: entry.CourseID,
+                    courseName: entry.CourseNameEN
+                };
+                var questArr = [];
+                entry.Questions.forEach(function(quest){
+                    if(quest.TextResults.length > 0){
+                        var countobj = {};
+                        var count = {};
+                        countobj.Qstring = quest.TextEN;
+                        quest.TextResults.forEach(function(i){ count[i] = (count[i] || 0) + 1;});
+                        countobj.results = count;
+                        questArr.push(countobj);
+                    }
+                });
+                courseRes.questions = questArr;
+                $scope.resArr.push(courseRes);
+            });
         };
 }]);

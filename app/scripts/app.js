@@ -10,7 +10,8 @@ angular.module('projectRestApp', [
     'projectRestApp.directive',
     'projectRestApp.service',
     'projectRestApp.factory',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angularCharts'
  ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider

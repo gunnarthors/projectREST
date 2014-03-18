@@ -142,6 +142,21 @@
     </div>
 </div>
 
+<div ng-show="showRes">
+    Evaluation Id: {{Results.ID}} based on Template {{Results.TemplateID}} </br>
+    Name: {{Results.TemplateTitleEN}}
+    <div class="well well-lg" ng-repeat="course in resArr">
+        {{course.courseID}} </br>
+        {{course.courseName}}
+        <div class="well well-lg">
+
+            <span ng-repeat="quest in course.questions">{{quest.Qstring}} </br>
+                <ul><li ng-repeat="(key, value) in quest.results">{{key}}: {{value}}</li></ul>
+            </span>
+        </div>
+    </div>
+</div>
+
 <div class="footer">
     <div class="col-lg-4">WEPO Project 3</div>
     <div class="col-lg-8">Bjarni, Gunnar og Hildur </div>
