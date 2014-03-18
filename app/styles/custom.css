@@ -40,14 +40,20 @@
 .Student-header-logout {
   color: #e25e5e;
 }
+.Student-evaluations {
+  cursor: pointer;
+}
+.Student-evaluations-body {
+  padding: 10px;
+}
+.Student-evaluations-body-item {
+  padding: 10px 5px;
+}
 .Student-info {
   font-size: 13px;
 }
 .Student-image {
   padding-bottom: 10px;
-}
-.Evaluations {
-  cursor: pointer;
 }
 .Teacher-info {
   font-size: 10px;
