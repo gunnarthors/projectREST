@@ -1,31 +1,65 @@
 /* -- Main Interface -- */
-
-@import 'admin.less';
-@import 'student.less';
-
+/* -- Admin Interface -- */
+.Admin-header {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  margin-bottom: 1px;
+}
+.Admin-header-logout {
+  color: #e25e5e;
+}
+.Evaluations-status {
+  float: right;
+  font-size: 13px;
+}
+.navbar-default .navbar-nav > li > a.Template-button {
+  color: white;
+  font-size: 14px;
+}
+.navbar-default .navbar-nav > li > a.Template-button--hover:hover {
+  color: black;
+  background-color: #e7e7e7;
+}
+/* -- Student Interface -- */
+.Student-header {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  margin-bottom: 1px;
+}
+.Student-header-logout {
+  color: #e25e5e;
+}
+.Student-info {
+  font-size: 13px;
+}
+.Student-image {
+  padding-bottom: 10px;
+}
+.Evaluations {
+  cursor: pointer;
+}
+.Teacher-info {
+  font-size: 10px;
+}
+.Teacher-info-image {
+  float: left;
+}
 /* - Variables - */
-@Header-background-color: white;
-@Header-border-color: white;
-@Template-button-color--hover: #e7e7e7;
-@logout-color: #e25e5e;
 /* - End Variables - */
-
 /* Space out content a bit */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
 /* Pointer cursor on links in nav and list of evaluations */
-.dropdown-menu li:hover, .dropdown-toggle:hover {
+.dropdown-menu li:hover,
+.dropdown-toggle:hover {
   cursor: pointer;
 }
-
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
-
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -33,21 +67,18 @@ body {
   line-height: 40px;
   padding-bottom: 19px;
 }
-
 /* Custom page footer */
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
-
 /* Customize container */
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
   }
 }
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -61,9 +92,7 @@ body {
     margin-bottom: 30px;
   }
 }
-
 /* ToDo: Delete this stuff below... */
-
 /* Everything but the jumbotron gets side spacing for mobile first views */
 /*.header,
 .footer {
