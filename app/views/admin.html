@@ -152,7 +152,9 @@
 
             <span ng-repeat="quest in course.questions">{{quest.Qstring}} </br>
                 <ul><li ng-repeat="(key, value) in quest.results">{{key}}: {{value}}</li></ul>
+                <div ac-chart="chartType" ac-data="chartData[$index]" ac-config="chartConfig" class='Admin-evaluation-results-chart'></div>
             </span>
+
         </div>
     </div>
 </div>

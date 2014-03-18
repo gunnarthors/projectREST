@@ -221,7 +221,7 @@ angular.module('projectRestApp.AdminCtrl', [])
                     $scope.formatResults(results);
                 });
         };
-
+        $scope.chartData = [];
         $scope.formatResults = function(data){
             $scope.resArr = [];
             data.Courses.forEach(function(entry){
@@ -237,11 +237,50 @@ angular.module('projectRestApp.AdminCtrl', [])
                         countobj.Qstring = quest.TextEN;
                         quest.TextResults.forEach(function(i){ count[i] = (count[i] || 0) + 1;});
                         countobj.results = count;
+                        var ser = [];
+                        var yax = [];
+                        var dat = [];
+                        for(var key in countobj.results){
+                            ser.push(key);
+                            yax.push(countobj.results[key]);
+                        }
+                        dat.push({x: '', y: yax});
+//                        console.log('series er ' + ser);
+//                        console.log('data  er ' + dat);
+                        countobj.chart = {series: ser, data: dat};
+                        $scope.chartData.push(countobj.chart);
                         questArr.push(countobj);
                     }
                 });
                 courseRes.questions = questArr;
                 $scope.resArr.push(courseRes);
+                console.log($scope.resArr);
             });
         };
+//        $scope.chartData = {
+//            series: [
+//                'Sales',
+//                'Income',
+//                'Expense'
+//            ],
+//            data: [{
+//                x: '',
+//                y: [
+//                    54,
+//                    145,
+//                    879
+//                ]
+//            }]
+//        };
+        $scope.chartConfig = {
+            labels: false,
+            title: '',
+            legend: {
+                display: true,
+                position: 'right'
+            }
+        };
+
+        $scope.chartType = 'bar';
+
 }]);
