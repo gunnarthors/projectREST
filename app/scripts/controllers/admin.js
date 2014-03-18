@@ -245,8 +245,6 @@ angular.module('projectRestApp.AdminCtrl', [])
                             yax.push(countobj.results[key]);
                         }
                         dat.push({x: '', y: yax});
-//                        console.log('series er ' + ser);
-//                        console.log('data  er ' + dat);
                         countobj.chart = {series: ser, data: dat};
                         $scope.chartData.push(countobj.chart);
                         questArr.push(countobj);
@@ -254,24 +252,9 @@ angular.module('projectRestApp.AdminCtrl', [])
                 });
                 courseRes.questions = questArr;
                 $scope.resArr.push(courseRes);
-                console.log($scope.resArr);
             });
         };
-//        $scope.chartData = {
-//            series: [
-//                'Sales',
-//                'Income',
-//                'Expense'
-//            ],
-//            data: [{
-//                x: '',
-//                y: [
-//                    54,
-//                    145,
-//                    879
-//                ]
-//            }]
-//        };
+
         $scope.chartConfig = {
             labels: false,
             title: '',
