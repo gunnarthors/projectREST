@@ -7,6 +7,8 @@ angular.module('projectRestApp.CreateCtrl', [])
         $scope.token = UserFactory.getUserToken();
         $scope.head = true;
         $scope.rows = false;
+        $scope.teacher = false;
+        $scope.course = false;
 
         $scope.evalObject = {};
 

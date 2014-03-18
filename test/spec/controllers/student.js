@@ -117,7 +117,6 @@ describe('Controller: StudentCtrl', function () {
         $httpBackend.flush();
     });
 
-
     it('testing if old answer is poped out if user changes answer', function () {
         var data = {
             DateBegin: 'fake',
@@ -125,7 +124,7 @@ describe('Controller: StudentCtrl', function () {
         };
 
         createController();
-        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/courses', $rootScope.token).respond(401, data);
+        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/courses', $rootScope.token).respond(201, data);
         $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/evaluations', $rootScope.token).respond(401);
         $rootScope.chosen('Frustrated', 39);
         var count = 0;
@@ -142,7 +141,6 @@ describe('Controller: StudentCtrl', function () {
                     expect($rootScope.ansArray.indexOf(entry)).toBe(0);
                 }
                 else{
-
                 }
             });
 
@@ -169,6 +167,23 @@ describe('Controller: StudentCtrl', function () {
 //            $scope.ansArray.push(ansObj);
         $httpBackend.flush();
     });
+
+    it('testing if student gets his evaluation', function () {
+        var data = [{ CourseID: 'T-427-WEPO',
+            ID: 21}, {CourseID: 'T-427-WEPO', ID: 20}];
+        var info = { ID: 21, TemplateID: 37, TitleEN:'mid term'};
+        createController();
+        $rootScope.arr = [];
+        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/courses', $rootScope.token).respond(401);
+        $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/my/evaluations', $rootScope.token).respond(201, data);
+
+        data.forEach(function(entry){
+            $httpBackend.expectGET('http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $rootScope.token).respond(201, info);
+
+        });
+        $httpBackend.flush();
+    });
+
 });
 
 //BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/my/evaluations', $scope.token)
@@ -186,3 +201,4 @@ describe('Controller: StudentCtrl', function () {
 //                    console.log('ERROR');
 //                });
 //        });
+//    })

@@ -1,6 +1,5 @@
 <div  class="header">
     <div >
-        <!--**************************ath laga id upp a css ****************************-->
         <nav id="head" class="navbar navbar-default">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -25,11 +24,6 @@
         </nav>
     </div>
 </div>
-<!--<ol class="breadcrumb">-->
-    <!--<li><a href="#">Login</a></li>-->
-    <!--<li><a href="#/admin/{{token}}">Home</a></li>-->
-    <!--<li class="active">Create Template</li>-->
-<!--</ol>-->
 <div>
     <form ng-show="head" role="form" name="templateForm" ng-submit="submitForm(templateForm.$valid)" novalidate>
         <div class="form-group" ng-class="{ 'has-error' : templateForm.title.$invalid && !templateForm.title.$pristine }">
@@ -42,10 +36,6 @@
             <input type="text" name="description" ng-model="description" class="form-control" required>
             <p ng-show="templateForm.description.$invalid && !templateForm.description.$pristine"
                class="help-block">Template description is required!</p>
-                <!--<input type="text" ng-model="titleIS"-->
-                <!--placeholder="Nafn sniðmát" class="form-control">-->
-                <!--<input type="text" ng-model="descriptionIS"-->
-                <!--placeholder="Sniðmáts lýsing" class="form-control">-->
         </div>
         <div class="form-group">
 
@@ -59,7 +49,7 @@
         <h4>{{evalObject.TitleEN}}</h4>
         <h5>{{evalObject.IntroTextEN}}</h5>
 
-
+    <h5 ng-show="course">Course Questions:</h5>
     <form class="form-horizontal" ng-repeat="questionView in evalObject.CourseQuestions">
         <div class="well well-lg">
             <fieldset>
@@ -70,20 +60,19 @@
             </fieldset>
         </div>
     </form>
-        <form class="form-horizontal" ng-repeat="questionView in evalObject.TeacherQuestions">
-            <div class="well well-lg">
-                <fieldset>
-                    <legend>{{$index + 1}}.&nbsp{{questionView.TextEN}}</legend>
-                    <div class="radio" ng-repeat="answersView in questionView.Answers">
-                        <input type="radio" name="radios" value="ans.TextEN"/><span>&nbsp;{{answersView.TextEN}}</span>
-                    </div>
-                </fieldset>
-            </div>
-        </form>
-    </div>
+    <h5 ng-show="teacher">Teacher Questions:</h5>
+    <form class="form-horizontal" ng-repeat="questionView in evalObject.TeacherQuestions">
+        <div class="well well-lg">
+            <fieldset>
+                <legend>{{$index + 1}}.&nbsp{{questionView.TextEN}}</legend>
+                <input type="text" class="form-control">
+            </fieldset>
+        </div>
+    </form>
+</div>
 
     <div ng-show="quest">
-        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed; isColl = true; multi()">Multi choice question</button>
+        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed; isColl = true; multi()">Course question</button>
         <div ng-hide="isCollapsed">
             <div class="well well-lg">
                 <form name="mPollForm" ng-submit="submitForm(mPollForm.$valid)" novalidate>
@@ -93,11 +82,6 @@
                             id="pollQuestion" required>
                         <p ng-show="mPollForm.question.$invalid && !mPollForm.question.$pristine" class="help-block">Question is required!</p>
                     </div>
-            <!--<div class="form-group">-->
-            <!--<label for="konnun">Spurning</label>-->
-            <!--<input type="text" ng-model="spurning" class="form-control"-->
-            <!--id="konnun" placeholder="Skráðu spurningu">-->
-            <!--</div>-->
                 <div class="form-group">
                     <label>Choices:</label>
                     <div ng-repeat="choice in question.Answers">
@@ -111,14 +95,8 @@
                     <div class="col-xs-12">
                         <button type="button" class="btn btn-primary btn-s" ng-click="addChoice()">
                             <span class="glyphicon glyphicon-plus"></span>Add choice</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <button type="button" class="btn btn-default" ng-click="addCourseQuestion(); isCollapsed = !isCollapsed">
-                            <span class="glyphicon glyphicon-plus"></span>Save as course question</button>
-                        <button type="button" class="btn btn-default" ng-click="addTeacherQuestion(); isCollapsed = !isCollapsed">
-                            <span class="glyphicon glyphicon-plus"></span>Save as teacher question</button>
+                        <button type="button" class="btn btn-default" ng-click="addCourseQuestion(); isCollapsed = !isCollapsed; course = true">
+                            <span class="glyphicon glyphicon-plus"></span>Save question</button>
                     </div>
                 </div>
                 </form>
@@ -126,7 +104,7 @@
         </div>
     </div>
     <div ng-show="quest">
-        <button class="btn btn-default" ng-click="isColl = !isColl; isCollapsed = true; text()">Text question</button>
+        <button class="btn btn-default" ng-click="isColl = !isColl; isCollapsed = true; text()">Teacher question</button>
         <div ng-hide="isColl">
             <div class="well well-lg">
                 <form name="pollForm" ng-submit="submitForm(pollForm.$valid)" novalidate>
@@ -135,17 +113,10 @@
                         <input type="text" ng-model="question.TextEN" class="form-control" name="question" required>
                         <p ng-show="pollForm.question.$invalid && !pollForm.question.$pristine" class="help-block">Question is required!</p>
                     </div>
-            <!--<div class="form-group">-->
-                <!--<label for="konnun">Spurning</label>-->
-                <!--<input type="text" ng-model="spurning" class="form-control"-->
-                <!--id="konnun" placeholder="Skráðu spurningu">-->
-                <!--</div>-->
-                <!--</div>-->
+
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="button" class="btn btn-default" ng-click="addCourseQuestion(); isColl = !isColl">
-                            <span class="glyphicon glyphicon-plus"></span>Save as course question</button>
-                        <button type="button" class="btn btn-default" ng-click="addTeacherQuestion(); isColl = !isColl">
+                        <button type="button" class="btn btn-default" ng-click="addTeacherQuestion(); isColl = !isColl; teacher = true">
                         <span class="glyphicon glyphicon-plus"></span>Save as teacher question</button>
                     </div>
                 </div>

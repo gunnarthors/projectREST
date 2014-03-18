@@ -46,8 +46,8 @@
     <div class="col-md-2"></div>
 
     <div class="col-md-8">
-        <legend ng-show="!showTemp">All evaluations:</legend>
-        <div ng-repeat="eval in evaluations"  ng-show="!showTemp">
+        <legend ng-show="showEval">All evaluations:</legend>
+        <div ng-repeat="eval in evaluations"  ng-show="showEval">
             <div class="panel panel-info">
                 <div class="panel-heading" ng-click="showResult(eval.ID)" style="cursor:pointer">
                     {{eval.TemplateTitleEN}}
@@ -132,9 +132,7 @@
                 <div class="well well-lg">
                     <fieldset>
                         <legend>{{$index + 1}}. &nbsp;{{Tquest.TextEN}}</legend>
-                        <div class="radio" ng-repeat="wer in Tquest.Answers">
-                            <input type="radio" name="radios" value="wer.TextEN"/><span>&nbsp;{{wer.TextEN}}</span>
-                        </div>
+                        <input type="text" class="form-control"/>
                     </fieldset>
                 </div>
             </form>

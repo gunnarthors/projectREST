@@ -2,6 +2,8 @@
 
 angular.module('projectRestApp.AdminCtrl', [])
     .controller('AdminCtrl',['$scope', '$route', 'BackEnd', '$location', '$modal', '$log', 'UserFactory', function ($scope, $route, BackEnd, $location, $modal, $log, UserFactory) {
+        $scope.showEval = true;
+        $scope.showTemp = false;
         $scope.token = UserFactory.getUserToken();
 
         $scope.createTemplate = function(){
@@ -36,6 +38,7 @@ angular.module('projectRestApp.AdminCtrl', [])
                 $scope.evalTemp = data;
                 $scope.currID = tempid;
                 $scope.showTemp = true;
+                $scope.showEval = false;
             })
             .error(function(status){
                 $scope.Terror = status;

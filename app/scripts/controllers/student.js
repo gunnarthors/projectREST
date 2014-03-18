@@ -45,6 +45,7 @@ angular.module('projectRestApp.StudentCtrl', [])
                 data.forEach(function(entry){
                     BackEnd.authRequest('GET', 'http://dispatch.ru.is/h14/api/v1/courses/' + entry.CourseID + '/20141/evaluations/' + entry.ID,  $scope.token)
                         .success(function(info){
+                            console.log(info);
                             var obj = entry;
                             obj.TitleEN = info.TitleEN;
                             $scope.arr.push(obj);
