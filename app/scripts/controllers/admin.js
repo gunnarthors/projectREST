@@ -222,6 +222,7 @@ angular.module('projectRestApp.AdminCtrl', [])
                 });
         };
         $scope.chartData = [];
+
         $scope.formatResults = function(data){
             $scope.resArr = [];
             data.Courses.forEach(function(entry){
@@ -248,11 +249,18 @@ angular.module('projectRestApp.AdminCtrl', [])
                         countobj.chart = {series: ser, data: dat};
                         $scope.chartData.push(countobj.chart);
                         questArr.push(countobj);
+                        $scope.countCharts = $scope.chartData.length;
                     }
                 });
                 courseRes.questions = questArr;
                 $scope.resArr.push(courseRes);
+
             });
+        };
+        $scope.countvar = -1;
+        $scope.func = function() {
+            $scope.countvar = $scope.countvar + 1;
+
         };
 
         $scope.chartConfig = {

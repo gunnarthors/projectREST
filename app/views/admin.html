@@ -148,11 +148,12 @@
     <div class="well well-lg" ng-repeat="course in resArr">
         {{course.courseID}} </br>
         {{course.courseName}}
+
         <div class="well well-lg">
 
             <span ng-repeat="quest in course.questions">{{quest.Qstring}} </br>
-                <ul class="list-unstyled"><li ng-repeat="(key, value) in quest.results"></li></ul>
-                <div ac-chart="chartType" ac-data="chartData[$index]" ac-config="chartConfig" class='Admin-evaluation-results-chart'></div>
+                <ul class="list-unstyled"><li ng-repeat="(key, value) in quest.results;func()"></li></ul>
+                <div ac-chart="chartType" ac-data="chartData[countvar]" ac-config="chartConfig" class='Admin-evaluation-results-chart'></div>
             </span>
 
         </div>
