@@ -1,4 +1,3 @@
-
 WEPO Assignment 3
 
 # projectRest
@@ -15,19 +14,24 @@ Node
 Bower
 Grunt
 ```
-
 <br>
 
 Navigate to projectRest directory.
 <br>
-
-
-For Windows users and if you rather not use python 2.x HTTPServer.
+Execute these commands:
 ```
 $ npm install
-$ bower install
-$ grunt serve
+$ grunt build
 ```
+That will build the project into a dist directroy.
+
+Now navigate to /dist directory and start a web server of your choice. Reason we expect that you have python installed is because it have a decent web server to use in this case.
+```
+$ python -m SimpleHTTPServer -- for python 2.x
+$ python -m http.server -- for python 3.x
+```
+<br>
+Open up a web browser at http://localhost:8000 and there you have the app.
 
 ## Created by:
 
