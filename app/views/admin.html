@@ -143,15 +143,15 @@
 </div>
 
 <div ng-show="showRes">
-    Evaluation Id: {{Results.ID}} based on Template {{Results.TemplateID}} </br>
-    Name: {{Results.TemplateTitleEN}}
+    <h3>{{Results.TemplateTitleEN}}</h3>
+    <h4>Evaluation Id: {{Results.ID}} based on Template {{Results.TemplateID}}</h4> </br>
     <div class="well well-lg" ng-repeat="course in resArr">
         {{course.courseID}} </br>
         {{course.courseName}}
         <div class="well well-lg">
 
             <span ng-repeat="quest in course.questions">{{quest.Qstring}} </br>
-                <ul><li ng-repeat="(key, value) in quest.results">{{key}}: {{value}}</li></ul>
+                <ul class="list-unstyled"><li ng-repeat="(key, value) in quest.results"></li></ul>
                 <div ac-chart="chartType" ac-data="chartData[$index]" ac-config="chartConfig" class='Admin-evaluation-results-chart'></div>
             </span>
 
